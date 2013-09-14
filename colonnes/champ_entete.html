@@ -1,1 +1,5 @@
-<th class='#ENV{nom}' scope='col'>#ENV{entete}</th>
+<th class='#ENV{nom}' scope='col'>[(#ENV{tri}|non)
+                                    #ENV{entete}
+                                  ][(#ENV{tri}|oui)
+                                    \#TRI{#ENV{nom},#ENV{entete}}
+                                  ]</th>

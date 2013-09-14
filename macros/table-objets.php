@@ -1,17 +1,22 @@
 <?php
-   $objets = $objet . 's';
+$objets = $objet . 's';
 ?>
 [(#SET{defaut_tri,#ARRAY{
-	id_document,1,
-	titre,1,
-	date,1,
+<?php
+  $defaut_tri = '';
+  foreach ($tri_defaut as $col => $sens_tri) {
+    $defaut_tri .= $col . ',' . $sens_tri . ',';
+  }
+  /* on retire la dernière virgule */
+  echo substr($defaut_tri, 0, -1);
+?>
 }})
 ]<B_liste_objets>
 #ANCRE_PAGINATION
 <div class="liste-objets <?php echo $objets; ?>">
 
 <pre>
-  <?php echo macrotable_calculer_criteres($colonnes); ?>
+  <?php echo macrotable_calculer_criteres($colonnes, $tri_defaut); ?>
 </pre>
 
 <table class='spip liste'>
@@ -27,7 +32,9 @@
 		</tr>
 	</thead>
 	<tbody>
-	<BOUCLE_liste_objets(<?php echo strtoupper($objets); ?> <?php echo $objets; ?>_liens)<?php echo macrotable_calculer_criteres($colonnes); ?>{tri id_document,#GET{defaut_tri}}{pagination #ENV{nb,10}}{!lang_select}{tout}>
+    <BOUCLE_liste_objets(<?php echo strtoupper($objets); ?> <?php echo $objets; ?>_liens)<?php
+    echo macrotable_calculer_criteres($colonnes, $tri_defaut);
+     ?>{pagination #ENV{nb,10}}{!lang_select}{tout}>
 		[(#LANG|changer_typo)]
 		<tr class="[(#COMPTEUR_BOUCLE|alterner{odd,even})]">
       <?php foreach ($colonnes as $i => $colonne) {

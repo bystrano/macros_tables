@@ -1,4 +1,8 @@
 objet: document
+tri_defaut:
+  id_document: 1
+  titre: 1
+  date: -1
 colonnes:
   -
     colonne: champ
@@ -6,7 +10,7 @@ colonnes:
       nom: id_document
       entete: "id"
       cellule: "#ID_DOCUMENT"
-      tri: non               # permet de trier par cette colonne
+      tri: oui               # permet de trier par cette colonne
       filtrer: oui           # filtre la boucle si ce champs est dans #ENV
   -
     colonne: champ
@@ -14,3 +18,17 @@ colonnes:
       nom: logo
       entete: "logo"
       cellule: "#LOGO_DOCUMENT"
+  -
+    colonne: champ
+    options:
+      nom: titre
+      entete: "Titre"
+      cellule: "#TITRE"
+      tri: oui
+  -
+    colonne: champ
+    options:
+      nom: date
+      entete: "date"
+      cellule: "[(#DATE|affdate_jourcourt)]"
+      tri: oui
