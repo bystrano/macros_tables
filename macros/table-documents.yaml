@@ -1,0 +1,16 @@
+objet: document
+colonnes:
+  -
+    colonne: champ
+    options:
+      nom: id_document
+      entete: "id"
+      cellule: "#ID_DOCUMENT"
+      tri: non               # permet de trier par cette colonne
+      filtrer: oui           # filtre la boucle si ce champs est dans #ENV
+  -
+    colonne: champ
+    options:
+      nom: logo
+      entete: "logo"
+      cellule: "#LOGO_DOCUMENT"

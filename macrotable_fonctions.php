@@ -11,13 +11,17 @@
 
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
+/* retourne les critères de boucle à ajouter selon les colonnes */
+function macrotable_calculer_criteres ($colonnes) {
 
-/*
- * Un fichier de fonctions permet de définir des éléments
- * systématiquement chargés lors du calcul des squelettes.
- *
- * Il peut par exemple définir des filtres, critères, balises, …
- * 
- */
+  $criteres = '';
 
-?>
+  foreach ($colonnes as $colonne) {
+    $calculer_criteres =
+      charger_fonction($colonne['colonne'] . '_criteres', 'colonnes');
+
+    $criteres .= $calculer_criteres($colonne);
+  }
+
+  return $criteres;
+}
