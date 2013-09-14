@@ -30,8 +30,8 @@ $objets = $objet . 's';
 	</thead>
 	<tbody>
     <BOUCLE_liste_<?php echo $objets; ?>(<?php echo strtoupper($objets); ?> <?php echo $objets; ?>_liens)<?php
-    echo macrotable_calculer_criteres($colonnes, $tri_defaut, $pagination);
-     ?>{!lang_select}{tout}>
+    echo macrotable_calculer_criteres($colonnes, $tri_defaut, $pagination, $criteres_extra);
+     ?>>
 		[(#LANG|changer_typo)]
 		<tr class="[(#COMPTEUR_BOUCLE|alterner{odd,even})]">
       <?php foreach ($colonnes as $i => $colonne) {

@@ -2,6 +2,9 @@ objet: document
 pagination:
   style: prive
   pas: 10
+criteres_extra:
+  - "{!lang_select}"
+  - "{tout}"
 tri_defaut:
   id_document: 1
   titre: 1

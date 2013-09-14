@@ -12,7 +12,7 @@
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
 /* retourne les critères de boucle à ajouter selon les colonnes */
-function macrotable_calculer_criteres ($colonnes, $tri_defaut, $pagination) {
+function macrotable_calculer_criteres ($colonnes, $tri_defaut, $pagination, $criteres_extra) {
 
   $criteres = '';
 
@@ -29,6 +29,12 @@ function macrotable_calculer_criteres ($colonnes, $tri_defaut, $pagination) {
 
   if ($pagination) {
     $criteres .= '{pagination ' . $pagination['pas'] . '}';
+  }
+
+  if ($criteres_extra) {
+    foreach ($criteres_extra as $critere_extra) {
+      $criteres .= $critere_extra;
+    }
   }
 
   return $criteres;
