@@ -2,19 +2,19 @@
   [(#ENV{tri}|non)
     #ENV{entete}
   ][(#ENV{tri}|oui)
-    \[\(\#ENV{tri_liste_objets}|=={#ENV{nom}}|oui\)
-      \[\(\#ENV{sens_liste_objets}|=={-1}|oui\)
+    \[\(\#ENV{tri_liste_#ENV{nom_table}}|=={#ENV{nom}}|oui\)
+      \[\(\#ENV{sens_liste_#ENV{nom_table}}|=={-1}|oui\)
         <span class="croissant">
           \[\(\#TRI{>,#ENV{entete}[(#ENV{ajax}|oui),ajax]}\)\]
         </span>
       \]
-      \[\(\#ENV{sens_liste_objets}|=={-1}|non\)
+      \[\(\#ENV{sens_liste_#ENV{nom_table}}|=={-1}|non\)
         <span class="decroissant">
           \[\(\#TRI{<,#ENV{entete}[(#ENV{ajax}|oui),ajax]}\)\]
         </span>
       \]
     \]
-    \[\(\#ENV{tri_liste_objets}|=={#ENV{nom}}|non\)
+    \[\(\#ENV{tri_liste_#ENV{nom_table}}|=={#ENV{nom}}|non\)
       \[\(\#TRI{#ENV{nom},#ENV{entete}[(#ENV{ajax}|oui),ajax]}\)\]
     \]
   ]</th>
