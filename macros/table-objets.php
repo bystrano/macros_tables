@@ -15,10 +15,6 @@ $objets = $objet . 's';
 #ANCRE_PAGINATION
 <div class="liste-objets <?php echo $objets; ?>">
 
-<pre>
-  <?php echo macrotable_calculer_criteres($colonnes, $tri_defaut); ?>
-</pre>
-
 <table class='spip liste'>
 <caption><strong class="caption">#ENV{titre-table}</strong></caption>
 	<thead>
