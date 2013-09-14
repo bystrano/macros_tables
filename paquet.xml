@@ -1,0 +1,43 @@
+<paquet
+	prefix="macrotable"
+	categorie="outil"
+	version="1.0.0"
+	etat="experimental"
+	compatibilite="[3.0.11;3.0.*]"
+	logo=""
+	documentation=""
+>
+	<!--
+		Paquet genere le 2013-09-14 18:17:05
+		(Vous pouvez bien entendu supprimer ces commentaires) 
+	-->
+
+	<nom>Macro Table</nom>
+
+	<!-- cette balise peut etre presente plusieurs fois s'il y a plusieurs auteurs --> 
+	<auteur>Michel Bystranowski</auteur>
+
+	<licence>GNU/GPL</licence>
+
+	<!--
+		Exemple de commandes
+		* dependances
+		<necessite nom="saisies" compatibilite="[1.21.0;]" />
+		<utilise nom="saisies" compatibilite="[1.21.0;]" />
+		<lib nom="simplehtmldom" lien="http://chemin_vers_archive.zip" />
+		* pipelines
+		<pipeline nom="autoriser" inclure="macrotable_autorisations.php" />
+		<pipeline nom="insert_head" inclure="macrotable_pipelines.php" />
+		* declarer un pipeline 
+		<pipeline nom="mon_pipeline" action="" />
+		* parents de menus de SPIP :
+				menu_accueil (A eviter), menu_edition, menu_publication,
+				menu_activite, menu_squelette, menu_administration, menu_configuration 
+		<menu nom="macrotable" titre="macrotable:macrotable_titre" parent="menu_edition"  icone="images/macrotable-16.png" />
+		* parents d'onglets... configuration, plugins, statistiques, ... 
+		<onglet nom="macrotable" titre="macrotable:macrotable_titre" parent="configuration" icone="images/macrotable-24.png" />
+	-->
+
+
+
+</paquet>
