@@ -10,8 +10,9 @@ colonnes:
       nom: id_document
       entete: "id"
       cellule: "#ID_DOCUMENT"
-      tri: oui               # permet de trier par cette colonne
-      filtrer: oui           # filtre la boucle si ce champs est dans #ENV
+      tri: oui              # permet de trier par cette colonne
+      ajax: oui
+      filtrer: oui          # filtre la boucle si ce champs est dans #ENV
   -
     colonne: champ
     options:
@@ -25,10 +26,12 @@ colonnes:
       entete: "Titre"
       cellule: "#TITRE"
       tri: oui
+      ajax: oui
   -
     colonne: champ
     options:
       nom: date
-      entete: "date"
+      entete: "Date"
       cellule: "[(#DATE|affdate_jourcourt)]"
       tri: oui
+      ajax: oui
