@@ -12,7 +12,7 @@ $objets = $objet . 's';
 ?>
 }})
 ]<B_liste_<?php echo $objets; ?>>
-#ANCRE_PAGINATION
+<?php if ($pagination): ?>#ANCRE_PAGINATION<?php endif; ?>
 <div class="liste-objets <?php echo $objets; ?>">
 
 <table class='spip liste'>
@@ -30,8 +30,8 @@ $objets = $objet . 's';
 	</thead>
 	<tbody>
     <BOUCLE_liste_<?php echo $objets; ?>(<?php echo strtoupper($objets); ?> <?php echo $objets; ?>_liens)<?php
-    echo macrotable_calculer_criteres($colonnes, $tri_defaut);
-     ?>{pagination #ENV{nb,10}}{!lang_select}{tout}>
+    echo macrotable_calculer_criteres($colonnes, $tri_defaut, $pagination);
+     ?>{!lang_select}{tout}>
 		[(#LANG|changer_typo)]
 		<tr class="[(#COMPTEUR_BOUCLE|alterner{odd,even})]">
       <?php foreach ($colonnes as $i => $colonne) {
@@ -44,7 +44,11 @@ $objets = $objet . 's';
 	[(#REM|changer_typo)]
 	</tbody>
 </table>
-[<p class='pagination'>(#PAGINATION{#ENV{pagination,prive}})</p>]
+<?php if ($pagination): ?>
+  [<p class='pagination'>(#PAGINATION{<?php echo $pagination['style'] ?
+                                                    $pagination['style'] : 'prive';
+                                                    ?>})</p>]
+<?php endif; ?>
 </div>
 </B_liste_<?php echo $objets; ?>>[
 <div class="liste-objets <?php echo $objets; ?> caption-wrap"><strong class="caption">(#ENV*{sinon,''})</strong></div>
