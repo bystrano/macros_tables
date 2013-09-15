@@ -13,7 +13,18 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 
 include_spip('filtres/multilike');
 
-/* retourne les critères de boucle à ajouter selon les colonnes */
+/**
+ * retourne les critères de boucle à ajouter selon les colonnes.
+ *
+ * @param array $colonnes        Un tableau de colonnes, au format des
+ *                               macros table.
+ * @param array $tri_defaut      Les sens par défaut pour le tri.
+ * @param array $pagination      Les paramètres de pagination.
+ * @param array $criteres_extra  Des critères à ajouter en plus.
+ * @param array $filtres         Un tableau de filtres, au format des
+ *                               macros table
+ * @return String                Les critères à ajouter dans la boucle.
+ */
 function macrotable_calculer_criteres ($colonnes, $tri_defaut, $pagination, $criteres_extra, $filtres=NULL) {
 
   $criteres = '';
@@ -51,7 +62,19 @@ function macrotable_calculer_criteres ($colonnes, $tri_defaut, $pagination, $cri
   return $criteres;
 }
 
-/* La fonction qui est appliquée aux tableaux de données des tables DATA */
+/**
+ * La fonction qui est appliquée aux tableaux de données des tables DATA.
+ *
+ * Pour chaque filtre, charge la fonction match correspondante et
+ * l'applique aux champs appropriés. Retourne un tableau de toutes les
+ * lignes qui ont matché.
+ *
+ * @param array $tableau     Le tableau a filtrer
+ * @param string $recherche  L'expression a chercher
+ * @param array $filtres     Un tableau de filtres, au format des macros
+ *                           table.
+ * @return array             Le tableau filtré.
+ */
 function macrotable_filtres ($tableau, $recherche, $filtres) {
 
   $fonctions_match = array();
@@ -78,6 +101,14 @@ function macrotable_filtres ($tableau, $recherche, $filtres) {
   return $resultat;
 }
 
+/**
+ * Retourne la balise #ARRAY correspondant à un tableau PHP.
+ *
+ * Agit récursivement sur les tableaux multi-dimensionnels.
+ *
+ * @param array $tableau  Un tableau…
+ * @return String         Une balise #ARRAY correspondant au tableau.
+ */
 function array2spip ($tableau) {
 
   $balise = '#ARRAY{';

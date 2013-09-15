@@ -8,7 +8,7 @@ function filtres_multilike_dist ($filtre) {
   return $criteres;
 }
 
-function filtres_multilike_match($recherche, $champ) {
+function filtres_multilike_match_dist ($recherche, $champ) {
 
   include_spip('inc/charsets');
 
@@ -21,7 +21,7 @@ function filtres_multilike_match($recherche, $champ) {
   return (preg_match('%' . $recherche . '%', $champ) === 1);
 }
 
-function critere_multilike_dist($idb, &$boucles, $crit) {
+function critere_multilike_dist ($idb, &$boucles, $crit) {
   $boucle = &$boucles[$idb];
   $table = $boucle->id_table;
   $not = $crit->not;
@@ -29,8 +29,7 @@ function critere_multilike_dist($idb, &$boucles, $crit) {
   /* récupération des paramètres */
   if (isset($crit->param[0])) {
     $recherche = calculer_liste($crit->param[0], array(), $boucles, $boucles[$idb]->id_parent);
-  } else {
-    // rendons obligatoire ce parametre
+  } else { /* parametre obligatoire */
     return (array('zbug_critere_necessite_parametre', array('critere' => $crit->op )));
   }
 
@@ -42,7 +41,6 @@ function critere_multilike_dist($idb, &$boucles, $crit) {
   $c = "calculer_where_multilike($table, $recherche, $champs)";
 
   $boucle->where[] = $c;
-
 }
 
 function calculer_where_multilike ($table, $recherche, $champs) {

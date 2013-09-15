@@ -28,7 +28,6 @@
               }
               multilike_timeout = window.setTimeout(function () {
                   $('#filtre_<?php echo $nom_filtre; ?>').submit();
-                  $('input[name="<?php echo $nom_input; ?>"]').focus();
               }, 500);
           })
 <?php endif; ?>
