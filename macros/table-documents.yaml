@@ -10,6 +10,7 @@ tri_defaut:
   id_document: 1
   titre: 1
   date: -1
+  fichier: 1
 filtres:
   -
     filtre: multilike
@@ -18,6 +19,7 @@ filtres:
       champs:
         - titre
         - id_document
+        - fichier
 colonnes:
   -
     colonne: champ
@@ -48,5 +50,13 @@ colonnes:
       nom: date
       entete: "Date"
       cellule: "[(#DATE|affdate_jourcourt)]"
+      tri: oui
+      ajax: oui
+  -
+    colonne: champ
+    options:
+      nom: fichier
+      entete: "Fichier"
+      cellule: "<a href='#FICHIER'>[(#FICHIER|replace{^.*/.*/,''})]</a>"
       tri: oui
       ajax: oui
