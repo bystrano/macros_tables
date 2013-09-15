@@ -10,7 +10,6 @@ filtres:
     filtre: multilike
     options:
       nom_input: q
-      autosubmit: oui
       champs:
         - titre
         - objet
