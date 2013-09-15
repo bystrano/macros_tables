@@ -31,7 +31,7 @@ if (is_array($filtres)) {
 		<tr class='first_row'>
       <?php
          foreach ($colonnes as $i => $colonne) {
-           $colonne['options']['nom_table'] = $objets;
+           $colonne['options']['nom_table'] = 'liste_' . $objets;
            echo inclure_macro(
                     'colonnes/' . $colonne['colonne'] . '_entete',
                     $colonne['options']);

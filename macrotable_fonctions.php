@@ -14,7 +14,7 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 include_spip('filtres/multilike');
 
 /* retourne les critères de boucle à ajouter selon les colonnes */
-function macrotable_calculer_criteres ($colonnes, $tri_defaut, $pagination, $criteres_extra, $filtres) {
+function macrotable_calculer_criteres ($colonnes, $tri_defaut, $pagination, $criteres_extra, $filtres=NULL) {
 
   $criteres = '';
 
@@ -51,11 +51,41 @@ function macrotable_calculer_criteres ($colonnes, $tri_defaut, $pagination, $cri
   return $criteres;
 }
 
+function macrotable_filtres ($tableau, $recherche, $filtres) {
+
+  $fonctions_match = array();
+  foreach ($filtres as $f) {
+    $fonctions_match[] = charger_fonction($f['filtre'] . '_match','filtres');
+  }
+  $resultat = array();
+
+  foreach ($tableau as $ligne) {
+    $pass = FALSE;
+    foreach($fonctions_match as $i => $match) {
+      if ( ! $pass) {
+        foreach ($filtres[$i]['options']['champs'] as $champ) {
+          if ($match($recherche, $ligne[$champ])) {
+            $resultat[] = $ligne ;
+            $pass = TRUE;
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  return $resultat;
+}
+
 function array2spip ($tableau) {
 
   $balise = '#ARRAY{';
   foreach ($tableau as $cle => $valeur) {
-    $balise .= $cle . ',' . $valeur . ',';
+    if (is_array($valeur)) {
+      $balise .= $cle . ',' . array2spip($valeur) . ',';
+    } else {
+      $balise .= $cle . ',' . $valeur . ',';
+    }
   }
   /* on retire la dernière virgule */
   $balise = substr($balise, 0, -1);

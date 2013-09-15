@@ -3,8 +3,8 @@
    if ( ! $tri) :
      echo $entete;
    else: ?>
-     [(#ENV{tri_liste_<?php echo $nom_table; ?>}|=={<?php echo $nom; ?>}|oui)
-       [(#ENV{sens_liste_<?php echo $nom_table; ?>}|=={-1}|?{
+     [(#ENV{tri_<?php echo $nom_table; ?>}|=={<?php echo $nom; ?>}|oui)
+       [(#ENV{sens_<?php echo $nom_table; ?>}|=={-1}|?{
          <span class="croissant">
            [(#TRI{>,<?php echo $entete . ($ajax ? ',ajax' : '');?>})]
          </span>,
@@ -13,7 +13,7 @@
          </span>
        })]
      ]
-     [(#ENV{tri_liste_<?php echo $nom_table; ?>}|=={<?php echo $nom; ?>}|non)
+     [(#ENV{tri_<?php echo $nom_table; ?>}|=={<?php echo $nom; ?>}|non)
        [(#TRI{<?php echo $nom; ?>,<?php echo $entete . ($ajax ? ',ajax' : '');?>})]
      ]<?php
    endif; ?>

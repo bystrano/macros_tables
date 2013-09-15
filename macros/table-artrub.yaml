@@ -1,3 +1,17 @@
+pagination:
+  style: prive
+  pas: 20
+tri_defaut:
+  titre: 1
+  objet: 1
+filtres:
+  -
+    filtre: multilike
+    options:
+      nom_input: q
+      champs:
+        - titre
+        - objet
 colonnes:
   -
     colonne: champ
@@ -5,9 +19,13 @@ colonnes:
       nom: titre
       entete: "titre"
       cellule: "[(#VALEUR|table_valeur{titre})]"
+      tri: oui
+      ajax: oui
   -
     colonne: champ
     options:
       nom: objet
       entete: "type"
       cellule: "[(#VALEUR|table_valeur{objet})]"
+      tri: oui
+      ajax: oui

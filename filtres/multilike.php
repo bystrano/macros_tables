@@ -8,6 +8,10 @@ function filtres_multilike_dist ($filtre) {
   return $criteres;
 }
 
+function filtres_multilike_match($recherche, $champ) {
+
+  return (preg_match('%' . $recherche . '%', $champ) === 1);
+}
 
 function critere_multilike_dist($idb, &$boucles, $crit) {
   $boucle = &$boucles[$idb];
