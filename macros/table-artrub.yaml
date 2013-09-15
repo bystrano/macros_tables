@@ -1,0 +1,13 @@
+colonnes:
+  -
+    colonne: champ
+    options:
+      nom: titre
+      entete: "titre"
+      cellule: "[(#VALEUR|table_valeur{titre})]"
+  -
+    colonne: champ
+    options:
+      nom: objet
+      entete: "type"
+      cellule: "[(#VALEUR|table_valeur{objet})]"
