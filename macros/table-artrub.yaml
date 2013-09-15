@@ -1,15 +1,16 @@
+nom_ajax: tabledata
 pagination:
   style: prive
   pas: 20
 tri_defaut:
   titre: 1
   objet: 1
-nom_ajax: tabledata
 filtres:
   -
     filtre: multilike
     options:
       nom_input: q
+      autosubmit: oui
       champs:
         - titre
         - objet

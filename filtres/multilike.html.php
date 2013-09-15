@@ -19,6 +19,19 @@
                   },
                   history: true
               });
-          });
+          })
+<?php if ($autosubmit == 'oui'): ?>
+          .find('input')
+          .keyup(function () {
+              if (window.multilike_timeout) {
+                  window.clearTimeout(multilike_timeout);
+              }
+              multilike_timeout = window.setTimeout(function () {
+                  $('#filtre_<?php echo $nom_filtre; ?>').submit();
+                  $('input[name="<?php echo $nom_input; ?>"]').focus();
+              }, 500);
+          })
+<?php endif; ?>
+          ;
   });
 </script>

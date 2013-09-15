@@ -51,6 +51,7 @@ function macrotable_calculer_criteres ($colonnes, $tri_defaut, $pagination, $cri
   return $criteres;
 }
 
+/* La fonction qui est appliquée aux tableaux de données des tables DATA */
 function macrotable_filtres ($tableau, $recherche, $filtres) {
 
   $fonctions_match = array();
