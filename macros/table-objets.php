@@ -25,7 +25,7 @@ foreach ($filtres as $i => $filtre) {
       <?php
          foreach ($colonnes as $i => $colonne) {
            $colonne['options']['nom_table'] = $objets;
-           echo recuperer_fond(
+           echo inclure_macro(
                     'colonnes/' . $colonne['colonne'] . '_entete',
                     $colonne['options']);
          } ?>
@@ -38,7 +38,7 @@ foreach ($filtres as $i => $filtre) {
 		[(#LANG|changer_typo)]
 		<tr class="[(#COMPTEUR_BOUCLE|alterner{odd,even})]">
       <?php foreach ($colonnes as $i => $colonne) {
-           echo recuperer_fond(
+           echo inclure_macro(
                     'colonnes/' . $colonne['colonne'] . '_cellule',
                     $colonne['options']);
       } ?>
