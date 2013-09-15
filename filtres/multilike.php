@@ -10,6 +10,14 @@ function filtres_multilike_dist ($filtre) {
 
 function filtres_multilike_match($recherche, $champ) {
 
+  include_spip('inc/charsets');
+
+  /* Les accents et la casse n'ont pas d'importance */
+  $champ = strtolower(translitteration($champ));
+  $recherche = strtolower(translitteration($recherche));
+  /* Les espaces entre les mots sont interprétés comme des OU */
+  $recherche = implode('|', explode(' ', $recherche));
+
   return (preg_match('%' . $recherche . '%', $champ) === 1);
 }
 
