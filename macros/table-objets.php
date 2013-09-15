@@ -11,7 +11,7 @@ foreach ($filtres as $i => $filtre) {
   $contexte = $filtre['options'];
   $contexte['nom_filtre'] = $objets . '_' . $i;
   $contexte['objets'] = $objets;
-  echo recuperer_fond('filtres/' . $filtre['filtre'], $contexte);
+  echo '#INCLURE{fond=' . recuperer_macro('filtres/' . $filtre['filtre'] . '.html', $contexte) . ', env}';
 } ?>
 
 <B_liste_<?php echo $objets; ?>>
