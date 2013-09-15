@@ -4,6 +4,7 @@ pagination:
 tri_defaut:
   titre: 1
   objet: 1
+nom_ajax: tabledata
 filtres:
   -
     filtre: multilike

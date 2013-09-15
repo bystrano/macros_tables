@@ -1,4 +1,5 @@
 objet: document
+nom_ajax: listedocuments
 pagination:
   style: prive
   pas: 10

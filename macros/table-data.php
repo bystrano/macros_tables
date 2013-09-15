@@ -15,6 +15,7 @@ if (is_array($filtres)) {
 
     $contexte = $filtre['options'];
     $contexte['nom_filtre'] = $i;
+    $contexte['nom_ajax'] = $nom_ajax;
     echo '#INCLURE{fond=' . recuperer_macro('filtres/' . $filtre['filtre'] . '.html', $contexte) . ', env}';
   }
 } ?>

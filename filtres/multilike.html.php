@@ -13,7 +13,7 @@
               <?php echo $nom_input; ?> = $(this)
                  .find('input[name="<?php echo $nom_input; ?>"]')
                  .attr('value');
-              ajaxReload('listedocuments', {
+              ajaxReload('<?php echo $nom_ajax; ?>', {
                   args:{
                       '<?php echo $nom_input; ?>': <?php echo $nom_input; ?>
                   },
