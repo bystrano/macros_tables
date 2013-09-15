@@ -9,6 +9,14 @@ tri_defaut:
   id_document: 1
   titre: 1
   date: -1
+filtres:
+  -
+    filtre: multilike
+    options:
+      nom_input: q
+      champs:
+        - titre
+        - id_document
 colonnes:
   -
     colonne: champ

@@ -1,17 +1,20 @@
 <?php
+include_spip('macrotable_fonctions.php');
 $objets = $objet . 's';
 ?>
-[(#SET{defaut_tri,#ARRAY{
+[(#SET{defaut_tri,<?php echo array2spip($tri_defaut); ?>})]
+[(#SET{champs_recherche,<?php
+  echo array2spip($filtres[0]['options']['champs']); ?>})]
 <?php
-  $defaut_tri = '';
-  foreach ($tri_defaut as $col => $sens_tri) {
-    $defaut_tri .= $col . ',' . $sens_tri . ',';
-  }
-  /* on retire la dernière virgule */
-  echo substr($defaut_tri, 0, -1);
-?>
-}})
-]<B_liste_<?php echo $objets; ?>>
+foreach ($filtres as $i => $filtre) {
+
+  $contexte = $filtre['options'];
+  $contexte['nom_filtre'] = $objets . '_' . $i;
+  $contexte['objets'] = $objets;
+  echo recuperer_fond('filtres/' . $filtre['filtre'], $contexte);
+} ?>
+
+<B_liste_<?php echo $objets; ?>>
 <?php if ($pagination): ?>#ANCRE_PAGINATION<?php endif; ?>
 <div class="liste-objets <?php echo $objets; ?>">
 
@@ -30,7 +33,7 @@ $objets = $objet . 's';
 	</thead>
 	<tbody>
     <BOUCLE_liste_<?php echo $objets; ?>(<?php echo strtoupper($objets); ?> <?php echo $objets; ?>_liens)<?php
-    echo macrotable_calculer_criteres($colonnes, $tri_defaut, $pagination, $criteres_extra);
+    echo macrotable_calculer_criteres($colonnes, $tri_defaut, $pagination, $criteres_extra, $filtres);
      ?>>
 		[(#LANG|changer_typo)]
 		<tr class="[(#COMPTEUR_BOUCLE|alterner{odd,even})]">
