@@ -2,16 +2,23 @@
 include_spip('macrotable_fonctions.php');
 $objets = $objet . 's';
 ?>
-[(#SET{defaut_tri,<?php echo array2spip($tri_defaut); ?>})]
-[(#SET{champs_recherche,<?php
-  echo array2spip($filtres[0]['options']['champs']); ?>})]
+<?php if (isset($tri_defaut)): ?>
+  [(#SET{defaut_tri,<?php echo array2spip($tri_defaut); ?>})]
+<?php endif; ?>
+<?php if (is_array($filtres)): ?>
+    [(#SET{champs_recherche,<?php
+      /* FIXME Ne supporte qu'un seul filtre pour l'instant FIXME */
+      echo array2spip($filtres[0]['options']['champs']); ?>})]
+<?php endif; ?>
 <?php
-foreach ($filtres as $i => $filtre) {
+if (is_array($filtres)) {
+  foreach ($filtres as $i => $filtre) {
 
-  $contexte = $filtre['options'];
-  $contexte['nom_filtre'] = $objets . '_' . $i;
-  $contexte['objets'] = $objets;
-  echo '#INCLURE{fond=' . recuperer_macro('filtres/' . $filtre['filtre'] . '.html', $contexte) . ', env}';
+    $contexte = $filtre['options'];
+    $contexte['nom_filtre'] = $objets . '_' . $i;
+    $contexte['objets'] = $objets;
+    echo '#INCLURE{fond=' . recuperer_macro('filtres/' . $filtre['filtre'] . '.html', $contexte) . ', env}';
+  }
 } ?>
 
 <B_liste_<?php echo $objets; ?>>

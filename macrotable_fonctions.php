@@ -25,11 +25,13 @@ function macrotable_calculer_criteres ($colonnes, $tri_defaut, $pagination, $cri
     $criteres .= $calculer_criteres_colonne($c);
   }
 
-  foreach ($filtres as $f) {
-    $calculer_criteres_filtres =
-      charger_fonction($f['filtre'], 'filtres');
+  if (is_array($filtres)) {
+    foreach ($filtres as $f) {
+      $calculer_criteres_filtres =
+        charger_fonction($f['filtre'], 'filtres');
 
-    $criteres .= $calculer_criteres_filtres($f);
+      $criteres .= $calculer_criteres_filtres($f);
+    }
   }
 
   if ($tri_defaut) {
