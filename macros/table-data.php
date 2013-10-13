@@ -1,5 +1,5 @@
 <?php
-include_spip('macrotable_fonctions.php');
+include_spip('macros_tables_fonctions.php');
 ?>
 <?php if (isset($tri_defaut)): ?>
   [(#SET{defaut_tri,<?php echo array2spip($tri_defaut); ?>})]
@@ -38,8 +38,8 @@ if (is_array($filtres)) {
 		</tr>
 	</thead>
 	<tbody>
-    <BOUCLE_data(DATA){source tableau, #ENV{donnees}|macrotable_filtres{#ENV{<?php echo $filtres[0]['options']['nom_input']; ?>}, <?php echo array2spip($filtres); ?>}}<?php
-      echo macrotable_calculer_criteres($colonnes, $tri_defaut, $pagination, $criteres_extra);
+    <BOUCLE_data(DATA){source tableau, #ENV{donnees}|macros_tables_filtres{#ENV{<?php echo $filtres[0]['options']['nom_input']; ?>}, <?php echo array2spip($filtres); ?>}}<?php
+      echo macros_tables_calculer_criteres($colonnes, $tri_defaut, $pagination, $criteres_extra);
      ?>>
 		[(#LANG|changer_typo)]
 		<tr class="[(#COMPTEUR_BOUCLE|alterner{odd,even})]">

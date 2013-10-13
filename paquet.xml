@@ -1,5 +1,5 @@
 <paquet
-	prefix="macrotable"
+	prefix="macros_tables"
 	categorie="outil"
 	version="1.0.0"
 	etat="experimental"
@@ -26,16 +26,16 @@
 		<utilise nom="saisies" compatibilite="[1.21.0;]" />
 		<lib nom="simplehtmldom" lien="http://chemin_vers_archive.zip" />
 		* pipelines
-		<pipeline nom="autoriser" inclure="macrotable_autorisations.php" />
-		<pipeline nom="insert_head" inclure="macrotable_pipelines.php" />
+		<pipeline nom="autoriser" inclure="macros_tables_autorisations.php" />
+		<pipeline nom="insert_head" inclure="macros_tables_pipelines.php" />
 		* declarer un pipeline 
 		<pipeline nom="mon_pipeline" action="" />
 		* parents de menus de SPIP :
 				menu_accueil (A eviter), menu_edition, menu_publication,
 				menu_activite, menu_squelette, menu_administration, menu_configuration 
-		<menu nom="macrotable" titre="macrotable:macrotable_titre" parent="menu_edition"  icone="images/macrotable-16.png" />
+		<menu nom="macros_tables" titre="macros_tables:macros_tables_titre" parent="menu_edition"  icone="images/macros_tables-16.png" />
 		* parents d'onglets... configuration, plugins, statistiques, ... 
-		<onglet nom="macrotable" titre="macrotable:macrotable_titre" parent="configuration" icone="images/macrotable-24.png" />
+		<onglet nom="macros_tables" titre="macros_tables:macros_tables_titre" parent="configuration" icone="images/macros_tables-24.png" />
 	-->
 
 

@@ -1,5 +1,5 @@
 <?php
-include_spip('macrotable_fonctions.php');
+include_spip('macros_tables_fonctions.php');
 $objets = $objet . 's';
 ?>
 <?php if (isset($tri_defaut)): ?>
@@ -41,7 +41,7 @@ if (is_array($filtres)) {
 	</thead>
 	<tbody>
     <BOUCLE_liste_<?php echo $objets; ?>(<?php echo strtoupper($objets); ?> <?php echo $objets; ?>_liens)<?php
-    echo macrotable_calculer_criteres($colonnes, $tri_defaut, $pagination, $criteres_extra, $filtres);
+    echo macros_tables_calculer_criteres($colonnes, $tri_defaut, $pagination, $criteres_extra, $filtres);
      ?>>
 		[(#LANG|changer_typo)]
 		<tr class="[(#COMPTEUR_BOUCLE|alterner{odd,even})]">

@@ -6,7 +6,7 @@
  * @copyright  2013
  * @author     Michel Bystranowski
  * @licence    GNU/GPL
- * @package    SPIP\Macrotable\Fonctions
+ * @package    SPIP\Macros_Tables\Fonctions
  */
 
 if (!defined('_ECRIRE_INC_VERSION')) return;
@@ -25,7 +25,7 @@ include_spip('filtres/multilike');
  *                               macros table
  * @return String                Les critères à ajouter dans la boucle.
  */
-function macrotable_calculer_criteres ($colonnes, $tri_defaut, $pagination, $criteres_extra, $filtres=NULL) {
+function macros_tables_calculer_criteres ($colonnes, $tri_defaut, $pagination, $criteres_extra, $filtres=NULL) {
 
   $criteres = '';
 
@@ -75,7 +75,7 @@ function macrotable_calculer_criteres ($colonnes, $tri_defaut, $pagination, $cri
  *                           table.
  * @return array             Le tableau filtré.
  */
-function macrotable_filtres ($tableau, $recherche, $filtres) {
+function macros_tables_filtres ($tableau, $recherche, $filtres) {
 
   $fonctions_match = array();
   foreach ($filtres as $f) {
