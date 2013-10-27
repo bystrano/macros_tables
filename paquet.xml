@@ -19,6 +19,8 @@
 
 	<licence>GNU/GPL</licence>
 
+	<necessite nom="macros" compatibilite="[1.0.0;]" />
+
 	<!--
 		Exemple de commandes
 		* dependances
