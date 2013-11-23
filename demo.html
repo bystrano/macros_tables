@@ -1,0 +1,16 @@
+<h1>Scratch</h1>
+
+#SET{tableau, #ARRAY}
+
+<BOUCLE_art(ARTICLES) {tout}>
+  [(#SET{tableau, #GET{tableau}|push{#ARRAY{titre,#TITRE*,objet,article}}})]
+</BOUCLE_art>
+
+<BOUCLE_rub(RUBRIQUES) {tout}>
+  [(#SET{tableau, #GET{tableau}|push{#ARRAY{titre,#TITRE*,objet,rubrique}}})]
+</BOUCLE_rub>
+
+<INCLURE{fond=#MACRO{macros/table-data, #CHEMIN{macros/table-artrub.yaml}|decoder_yaml},
+          env,
+          donnees=#GET{tableau},
+          ajax=tabledata}>
