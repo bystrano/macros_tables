@@ -81,6 +81,11 @@ function macros_tables_filtres ($tableau, $recherche, $filtres) {
   foreach ($filtres as $f) {
     $fonctions_match[] = charger_fonction($f['filtre'] . '_match','filtres');
   }
+
+  if ( ! $fonctions_match) {
+    return $tableau;
+  }
+
   $resultat = array();
 
   foreach ($tableau as $ligne) {
@@ -110,6 +115,10 @@ function macros_tables_filtres ($tableau, $recherche, $filtres) {
  * @return String         Une balise #ARRAY correspondant au tableau.
  */
 function array2spip ($tableau) {
+
+  if ( ! is_array($tableau)) {
+    return '#ARRAY{}';
+  }
 
   $balise = '#ARRAY{';
   foreach ($tableau as $cle => $valeur) {
