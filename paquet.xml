@@ -1,45 +1,19 @@
 <paquet
 	prefix="macros_tables"
 	categorie="outil"
-	version="1.0.0"
-	etat="experimental"
+	version="0.0.1"
+	etat="dev"
 	compatibilite="[3.0.11;3.0.*]"
 	logo=""
 	documentation=""
 >
-	<!--
-		Paquet genere le 2013-09-14 18:17:05
-		(Vous pouvez bien entendu supprimer ces commentaires) 
-	-->
 
 	<nom>Macro Table</nom>
 
-	<!-- cette balise peut etre presente plusieurs fois s'il y a plusieurs auteurs --> 
 	<auteur>Michel Bystranowski</auteur>
 
 	<licence>GNU/GPL</licence>
 
 	<necessite nom="macros" compatibilite="[1.0.0;]" />
-
-	<!--
-		Exemple de commandes
-		* dependances
-		<necessite nom="saisies" compatibilite="[1.21.0;]" />
-		<utilise nom="saisies" compatibilite="[1.21.0;]" />
-		<lib nom="simplehtmldom" lien="http://chemin_vers_archive.zip" />
-		* pipelines
-		<pipeline nom="autoriser" inclure="macros_tables_autorisations.php" />
-		<pipeline nom="insert_head" inclure="macros_tables_pipelines.php" />
-		* declarer un pipeline 
-		<pipeline nom="mon_pipeline" action="" />
-		* parents de menus de SPIP :
-				menu_accueil (A eviter), menu_edition, menu_publication,
-				menu_activite, menu_squelette, menu_administration, menu_configuration 
-		<menu nom="macros_tables" titre="macros_tables:macros_tables_titre" parent="menu_edition"  icone="images/macros_tables-16.png" />
-		* parents d'onglets... configuration, plugins, statistiques, ... 
-		<onglet nom="macros_tables" titre="macros_tables:macros_tables_titre" parent="configuration" icone="images/macros_tables-24.png" />
-	-->
-
-
 
 </paquet>
