@@ -1,4 +1,4 @@
-<h1>Scratch</h1>
+<h1>Demo Macros Tables</h1>
 
 #SET{tableau, #ARRAY}
 
@@ -10,7 +10,7 @@
   [(#SET{tableau, #GET{tableau}|push{#ARRAY{titre,#TITRE*,objet,rubrique}}})]
 </BOUCLE_rub>
 
-<INCLURE{fond=#MACRO{macros/table-data, #CHEMIN{macros/table-artrub.yaml}|decoder_yaml},
+<INCLURE{fond=#MACRO{macros/table-data, #CHEMIN{tables/table-artrub.yaml}|decoder_yaml},
           env,
           donnees=#GET{tableau},
           ajax=tabledata}>
