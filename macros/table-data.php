@@ -25,7 +25,7 @@ if (is_array($filtres)) {
 <div class="liste-objets">
 
 <table class='spip liste'>
-<caption><strong class="caption">#ENV{titre-table}</strong></caption>
+[<caption><strong class="caption">(#ENV{titre-table})</strong></caption>]
 	<thead>
 		<tr class='first_row'>
       <?php
