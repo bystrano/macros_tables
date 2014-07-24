@@ -11,8 +11,6 @@
 
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
-include_spip('filtres/multilike');
-
 /**
  * retourne les critères de boucle à ajouter selon les colonnes.
  *
@@ -79,6 +77,7 @@ function macros_tables_filtres ($tableau, $recherche, $filtres) {
 
   $fonctions_match = array();
   foreach ($filtres as $f) {
+    include_spip('filtres/' . $f['filtre']);
     $fonctions_match[] = charger_fonction($f['filtre'] . '_match','filtres');
   }
 
