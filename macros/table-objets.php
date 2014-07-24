@@ -8,6 +8,16 @@ $objets = $objet . 's';
 <?php if (isset($tri_defaut)): ?>
   [(#SET{defaut_tri,<?php echo array2spip($tri_defaut); ?>})]
 <?php endif; ?>
+<?php if (isset($filtres)): ?>
+  [(#SET{env_filtres,<?php
+                    $env_filtres = array();
+                    foreach ($filtres as $filtre) {
+                      $nom_filtre = $filtre['options']['nom'];
+                      $env_filtres[$nom_filtre] = '#ENV{' . $nom_filtre . '}';
+                    }
+                    echo array2spip($env_filtres);
+                    ?>})]
+<?php endif;?>
 <?php
 /**
  * Insertion des formulaires de filtres
@@ -50,7 +60,7 @@ if (is_array($filtres)) {
      */
     ?>
     <BOUCLE_liste_<?php echo $objets; ?>(<?php echo strtoupper($objets); ?> <?php echo $objets; ?>_liens)<?php
-    echo macros_tables_calculer_criteres($colonnes, $tri_defaut, $pagination, $criteres_extra, $filtres);
+    echo macros_tables_calculer_criteres($colonnes, $tri_defaut, $pagination, $criteres_extra, $filtres,$env_filtres);
      ?>>
 		[(#LANG|changer_typo)]
 		<tr class="[(#COMPTEUR_BOUCLE|alterner{odd,even})]">
