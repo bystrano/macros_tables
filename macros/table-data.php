@@ -1,4 +1,7 @@
 <?php
+/**
+ * Initialisation des variables
+ */
 include_spip('macros_tables_fonctions.php');
 ?>
 <?php if (isset($tri_defaut)): ?>
@@ -10,6 +13,9 @@ include_spip('macros_tables_fonctions.php');
     echo array2spip($filtres[0]['options']['champs']); ?>})]
 <?php endif; ?>
 <?php
+/**
+ * Insertion des formulaires de filtres
+ */
 if (is_array($filtres)) {
   foreach ($filtres as $i => $filtre) {
 
@@ -29,6 +35,9 @@ if (is_array($filtres)) {
 	<thead>
 		<tr class='first_row'>
       <?php
+         /**
+          * Insertion des entêtes du tableau
+          */
          foreach ($colonnes as $i => $colonne) {
            $colonne['options']['nom_table'] = 'data';
            echo inclure_macro(
@@ -38,16 +47,26 @@ if (is_array($filtres)) {
 		</tr>
 	</thead>
 	<tbody>
+    <?php
+    /**
+     * Boucle principale
+     */
+    ?>
     <BOUCLE_data(DATA){source tableau, #ENV{donnees}|macros_tables_filtres{#ENV{<?php echo $filtres[0]['options']['nom_input']; ?>}, <?php echo array2spip($filtres); ?>}}<?php
       echo macros_tables_calculer_criteres($colonnes, $tri_defaut, $pagination, $criteres_extra);
      ?>>
 		[(#LANG|changer_typo)]
 		<tr class="[(#COMPTEUR_BOUCLE|alterner{odd,even})]">
-      <?php foreach ($colonnes as $i => $colonne) {
-           echo inclure_macro(
-                    'colonnes/' . $colonne['colonne'] . '_cellule',
-                    $colonne['options']);
-      } ?>
+      <?php
+        /**
+         * Insertion des cellules
+         */
+        foreach ($colonnes as $i => $colonne) {
+             echo inclure_macro(
+                      'colonnes/' . $colonne['colonne'] . '_cellule',
+                      $colonne['options']);
+        }
+      ?>
 		</tr>
 	</BOUCLE_data>
 	[(#REM|changer_typo)]
