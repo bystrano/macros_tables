@@ -131,3 +131,53 @@ function array2spip ($tableau) {
 
   return $balise;
 }
+
+/**
+ * Implémente un nouveau critère, qui permet de faire LIKE sql sur plusieurs champs
+ *
+ * @example <BOUCLE_exemple(ARTICLES){multilike test,#ARRAY{0,chapo,1,texte}}>
+ *     N'affichera dans la boucle que les articles qui contiennent le
+ *     mot "test" dans leur chapo ou dans leur texte.
+ */
+function critere_multilike_dist ($idb, &$boucles, $crit) {
+  $boucle = &$boucles[$idb];
+  $table = $boucle->id_table;
+  $not = $crit->not;
+
+  /* récupération des paramètres */
+  if (isset($crit->param[0])) {
+    $recherche = calculer_liste($crit->param[0], array(), $boucles, $boucles[$idb]->id_parent);
+  } else { /* parametre obligatoire */
+    return (array('zbug_critere_necessite_parametre', array('critere' => $crit->op )));
+  }
+
+  if (isset($crit->param[1])) {
+    $champs = calculer_liste($crit->param[1], array(), $boucles, $boucles[$idb]->id_parent);
+  }
+
+  /* Construction du tableau $where */
+  $c = "calculer_where_multilike($table, $recherche, $champs)";
+
+  $boucle->where[] = $c;
+}
+
+
+/**
+ * Calculer le WHERE SQL correspondant à un critère multilike
+ */
+function calculer_where_multilike ($table, $recherche, $champs) {
+
+  $where = array('LIKE', $table . '.' . array_shift($champs),
+                 sql_quote('%' . $recherche . '%'));
+
+  foreach ($champs as $champ) {
+    $where = array(
+               'OR',
+               array('LIKE', $table . '.' . $champ,
+                     sql_quote('%' . $recherche . '%')),
+               $where,
+             );
+  }
+
+  return $where;
+}
