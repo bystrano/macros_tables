@@ -7,11 +7,16 @@ include_spip('macros_tables_fonctions.php');
 <?php if (isset($tri_defaut)): ?>
   [(#SET{defaut_tri,<?php echo array2spip($tri_defaut); ?>})]
 <?php endif; ?>
-<?php if (is_array($filtres)): ?>
-  [(#SET{champs_recherche,<?php
-    /* FIXME Ne supporte qu'un seul filtre pour l'instant FIXME */
-    echo array2spip($filtres[0]['options']['champs']); ?>})]
-<?php endif; ?>
+<?php if (isset($filtres)): ?>
+  [(#SET{env_filtres,<?php
+                    $env_filtres = array();
+                    foreach ($filtres as $filtre) {
+                      $nom_filtre = $filtre['options']['nom_input'];
+                      $env_filtres[$nom_filtre] = '#ENV{' . $nom_filtre . '}';
+                    }
+                    echo array2spip($env_filtres);
+                    ?>})]
+<?php endif;?>
 <?php
 /**
  * Insertion des formulaires de filtres
@@ -52,7 +57,7 @@ if (is_array($filtres)) {
      * Boucle principale
      */
     ?>
-    <BOUCLE_data(DATA){source tableau, #ENV{donnees}|macros_tables_filtres{#ENV{<?php echo $filtres[0]['options']['nom_input']; ?>}, <?php echo array2spip($filtres); ?>}}<?php
+    <BOUCLE_data(DATA){source tableau, #ENV{donnees}|macros_tables_filtres{#GET{env_filtres}, <?php echo array2spip($filtres); ?>}}<?php
       echo macros_tables_calculer_criteres($colonnes, $tri_defaut, $pagination, $criteres_extra);
      ?>>
 		[(#LANG|changer_typo)]

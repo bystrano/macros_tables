@@ -8,11 +8,6 @@ $objets = $objet . 's';
 <?php if (isset($tri_defaut)): ?>
   [(#SET{defaut_tri,<?php echo array2spip($tri_defaut); ?>})]
 <?php endif; ?>
-<?php if (is_array($filtres)): ?>
-    [(#SET{champs_recherche,<?php
-      /* FIXME Ne supporte qu'un seul filtre pour l'instant FIXME */
-      echo array2spip($filtres[0]['options']['champs']); ?>})]
-<?php endif; ?>
 <?php
 /**
  * Insertion des formulaires de filtres

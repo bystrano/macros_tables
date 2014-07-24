@@ -8,7 +8,7 @@ TODO
 
 ## Filtres
 
-- [ ] permettre plusieurs filtres en série
+- [x] permettre plusieurs filtres en série
 
 ## README
 

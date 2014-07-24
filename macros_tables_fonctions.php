@@ -69,7 +69,8 @@ function macros_tables_calculer_criteres ($colonnes, $tri_defaut, $pagination, $
  * lignes qui ont matché.
  *
  * @param array $tableau     Le tableau a filtrer
- * @param string $recherche  L'expression a chercher
+ * @param array $recherche   Un tableau contenant les éléments à
+ *                             chercher pour les différents filtres.
  * @param array $filtres     Un tableau de filtres, au format des macros
  *                           table.
  * @return array             Le tableau filtré.
@@ -91,12 +92,12 @@ function macros_tables_filtres ($tableau, $recherche, $filtres) {
   foreach ($tableau as $ligne) {
     $pass = FALSE;
     foreach($fonctions_match as $i => $match) {
-      if ( ! $pass) {
-        if ($match($filtres[$i], $recherche, $ligne)) {
-          $resultat[] = $ligne;
-          $pass = TRUE; // Si un filtre est OK, on ne teste pas les autres.
-        }
+      if (( ! $pass) AND ( ! $match($filtres[$i], $recherche[$filtres[$i]['options']['nom_input']], $ligne))) {
+        $pass = TRUE; // Si un filtre ne match pas, on ne teste pas les autres.
       }
+    }
+    if ( ! $pass) {
+        $resultat[] = $ligne;
     }
   }
 

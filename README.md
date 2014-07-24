@@ -107,8 +107,7 @@ On peut par exemple donner le tableau `array("{!lang}", "{tout}")`.
 
 ### `filtres`
 
-Même si aujourd'hui on ne peut utiliser qu'un seul filtre, le paramètre `filtres` est prévu pour pouvoir en ajouter plusieurs.
-Il faut donc lui donner une liste de filtres.
+Le paramètre `filtres` permet d'ajouter plusieurs filtres, il faut donc lui donner une liste de filtres.
 Les filtres doivent être définis dans un format proche du plugin Saisies.
 On donne pour chaque filtre un tableau contenant une clé `filtre` définissant le filtre à utiliser et une clé `options` définissant les paramètres du filtre.
 
@@ -122,6 +121,13 @@ On a alors un tableau comme : (en YAML)
                 champs:
                     - titre
                     - objet
+        -
+            filtre: multilike
+            options:
+                nom_input: q_chapo
+                champs:
+                    - chapo
+
 
 #### `multilike`
 
@@ -131,7 +137,7 @@ Les options sont :
 
 - **`nom_input`** définit l'attribut `name` de la balise `<input>` dans laquelle on pourra saisir des mots-clés. Ce nom sera aussi utilisé comme argument dans l'url.
 
-- **`champs`** permet de définir les colonnes que le filtre prendra en compte. Doit être une liste de noms de colonnes.
+- **`champs`** permet de définir les colonnes sql que le filtre prendra en compte. Doit être une liste de noms de colonnes. Pour les macros `table-objet`, ce doivent être des noms de colonnes SQL.
 
 
 ### `colonnes`
