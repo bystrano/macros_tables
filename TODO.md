@@ -2,14 +2,14 @@
 TODO
 ====
 
-# Le système de tri par défaut
+## Le système de tri par défaut
 
 - [ ] On devrait pouvoir choisir la priorité de chaque colonne
 
-# Filtres
+## Filtres
 
 - [ ] permettre plusieurs filtres en série
 
-# README
+## README
 
 - [ ] décrire (et revoir ?) l'API
