@@ -70,8 +70,8 @@ if (is_array($filtres)) {
 	</tbody>
 </table>
 <?php if ($pagination): ?>
-  [<p class='pagination'>(#PAGINATION{<?php echo $pagination['style'] ?
-                                                    $pagination['style'] : 'prive';
+  [<p class='pagination'>(#PAGINATION{<?php echo $pagination['modele'] ?
+                                                    $pagination['modele'] : 'prive';
                                                     ?>})</p>]
 <?php endif; ?>
 </div>

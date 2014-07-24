@@ -1,6 +1,6 @@
 <form id="filtre_<?php echo $nom_filtre; ?>" class="filtre_multilike" method="get" action="">
 
-  <input type="text" name="<?php echo $nom_input; ?>" value="#ENV{<?php echo $nom_input; ?>}" />
+  <input type="text" name="<?php echo $nom; ?>" value="#ENV{<?php echo $nom; ?>}" />
   <input type="submit" value="filtrer" />
 </form>
 
@@ -10,12 +10,12 @@
           .unbind('submit')
           .submit(function (e) {
               e.preventDefault();
-              <?php echo $nom_input; ?> = $(this)
-                 .find('input[name="<?php echo $nom_input; ?>"]')
+              <?php echo $nom; ?> = $(this)
+                 .find('input[name="<?php echo $nom; ?>"]')
                  .attr('value');
               ajaxReload('<?php echo $nom_ajax; ?>', {
                   args:{
-                      '<?php echo $nom_input; ?>': <?php echo $nom_input; ?>
+                      '<?php echo $nom; ?>': <?php echo $nom; ?>
                   },
                   history: true
               });

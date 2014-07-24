@@ -1,7 +1,7 @@
 objet: document
 nom_ajax: listedocuments
 pagination:
-  style: prive
+  modele: prive
   pas: 10
 criteres_extra:
   - "{!lang_select}"
@@ -15,7 +15,7 @@ filtres:
   -
     filtre: multilike
     options:
-      nom_input: q
+      nom: q
       champs:
         - titre
         - id_document

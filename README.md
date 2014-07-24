@@ -34,7 +34,7 @@ On n'a alors plus qu'à écrire un fichier `tables/table-artrub.yaml`, par exemp
 
     nom_ajax: tabledata
     pagination:
-        style: prive
+        modele: prive
         pas: 20
     tri_defaut:
         titre: 1
@@ -43,7 +43,7 @@ On n'a alors plus qu'à écrire un fichier `tables/table-artrub.yaml`, par exemp
         -
             filtre: multilike
             options:
-                nom_input: q
+                nom: q
             champs:
                 - titre
                 - objet
@@ -87,7 +87,7 @@ Doit être **au singulier**, disponible uniquement sur la macro `table-objet`.
 
 Le paramètre `pagination` doit être un tableau avec deux clés :
 
-- **`style`** le modèle de pagination utilisé, comme `page`, `prive` ou n'importe quel modèle de pagination (cf. [le système de pagination SPIP sur spip.net](http://www.spip.net/fr_article3367.html)).
+- **`modele`** le modèle de pagination utilisé, comme `page`, `prive` ou n'importe quel modèle de pagination (cf. [le système de pagination SPIP sur spip.net](http://www.spip.net/fr_article3367.html)).
 
 - **`pas`** le nombre d'éléments par page.
 
@@ -117,14 +117,14 @@ On a alors un tableau comme : (en YAML)
         -
             filtre: multilike
             options:
-                nom_input: q
+                nom: q
                 champs:
                     - titre
                     - objet
         -
             filtre: multilike
             options:
-                nom_input: q_chapo
+                nom: q_chapo
                 champs:
                     - chapo
 
@@ -135,7 +135,7 @@ Le seul filtre disponible pour l'instant…
 Ce filtre ajoute au tableau un formulaire de recherche par mots-clés qui permet de filtrer le tableau en ajax.
 Les options sont :
 
-- **`nom_input`** définit l'attribut `name` de la balise `<input>` dans laquelle on pourra saisir des mots-clés. Ce nom sera aussi utilisé comme argument dans l'url.
+- **`nom`** définit l'attribut `name` de la balise `<input>` dans laquelle on pourra saisir des mots-clés. Ce nom sera aussi utilisé comme argument dans l'url pour pouvoir précharger le filtre.
 
 - **`champs`** permet de définir les colonnes sql que le filtre prendra en compte. Doit être une liste de noms de colonnes. Pour les macros `table-objet`, ce doivent être des noms de colonnes SQL.
 

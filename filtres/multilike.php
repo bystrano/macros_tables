@@ -29,7 +29,7 @@ function filtres_multilike_calculer_criteres_objet_dist ($filtre) {
 
   $opts = $filtre['options'];
   $champs_recherche = $filtre['options']['champs'];
-  $criteres = '{' . $filtre['filtre'] . ' #ENV{' . $opts['nom_input'] . '},' . array2spip($champs_recherche) . '}';
+  $criteres = '{' . $filtre['filtre'] . ' #ENV{' . $opts['nom'] . '},' . array2spip($champs_recherche) . '}';
 
   return $criteres;
 }

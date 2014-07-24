@@ -1,6 +1,6 @@
 nom_ajax: tabledata
 pagination:
-  style: prive
+  modele: prive
   pas: 20
 tri_defaut:
   titre: 1
@@ -9,7 +9,7 @@ filtres:
   -
     filtre: multilike
     options:
-      nom_input: q
+      nom: q
       champs:
         - titre
         - objet

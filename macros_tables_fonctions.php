@@ -92,7 +92,7 @@ function macros_tables_filtres ($tableau, $recherche, $filtres) {
   foreach ($tableau as $ligne) {
     $pass = FALSE;
     foreach($fonctions_match as $i => $match) {
-      if (( ! $pass) AND ( ! $match($filtres[$i], $recherche[$filtres[$i]['options']['nom_input']], $ligne))) {
+      if (( ! $pass) AND ( ! $match($filtres[$i], $recherche[$filtres[$i]['options']['nom']], $ligne))) {
         $pass = TRUE; // Si un filtre ne match pas, on ne teste pas les autres.
       }
     }

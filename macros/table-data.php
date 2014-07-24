@@ -11,7 +11,7 @@ include_spip('macros_tables_fonctions.php');
   [(#SET{env_filtres,<?php
                     $env_filtres = array();
                     foreach ($filtres as $filtre) {
-                      $nom_filtre = $filtre['options']['nom_input'];
+                      $nom_filtre = $filtre['options']['nom'];
                       $env_filtres[$nom_filtre] = '#ENV{' . $nom_filtre . '}';
                     }
                     echo array2spip($env_filtres);
@@ -78,8 +78,8 @@ if (is_array($filtres)) {
 	</tbody>
 </table>
 <?php if ($pagination): ?>
-  [<p class='pagination'>(#PAGINATION{<?php echo $pagination['style'] ?
-                                                    $pagination['style'] : 'prive';
+  [<p class='pagination'>(#PAGINATION{<?php echo $pagination['modele'] ?
+                                                    $pagination['modele'] : 'prive';
                                                     ?>})</p>]
 <?php endif; ?>
 </div>
