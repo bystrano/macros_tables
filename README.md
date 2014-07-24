@@ -175,3 +175,21 @@ Permet de donner un titre à la table, qui sera alors affiché dans la balise `<
 ### `sinon`
 
 Le message à afficher dans le cas où la table est vide.
+
+
+
+API
+---
+
+Les macros fournies par ce plugin sont conçues pour être étendues : il est possible de créer ses propres types de filtres ou de colonnes.
+
+### Créer un nouveau filtre
+
+Un filtre est défini par son nom, qui sert d'identifiant.
+Ce nom ne peut donc pas contenir des caractères autres qu'alphanumériques.
+Une fois qu'on a choisi ce nom (on prendra ici `nom_filtre` comme exemple), il faut créer deux fichiers dans le dossier filtres (les fichiers de filtres sont surchargeables).
+
+- Le fichier `nom_filtre.html.php` contient la macros qui sera incluse dans le squelette du tableau. Elle contient le formulaire dont on se servira pour filtrer la table. Lors de son inclusion, la macro reçoit en paramètres les options que l'on a données au filtre.
+- Le fichier `nom_filtre.php` est un fichier php dans lequel on doit implémenter 2 fonctions :
+  - `filtres_nom_filtre_calculer_criteres_objet` servira pour filtrer les tables générées par la macro `table-objet`. Elle reçoit en paramètre le tableau description du filtre tel que donné dans les options de la macro. Doit retourner une chaîne de caractères qui sera insérée dans les critères de la boucle principale. Les valeurs retournées doivent donc être des suites de critères entre accolades.
+  - `filtres_nom_filtre_filtrer_data` servira pour filtrer les tables générées par la macro `table-data`. Elle reçoit en paramètre le tableau de description du filtre, une variable décrivant la recherche (p.ex. les mots-clés à rechercher) et un ligne du tableau. Doit retourner `TRUE` si la ligne contient une occurence de la recherche, `FALSE` sinon.

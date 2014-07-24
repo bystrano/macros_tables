@@ -36,8 +36,9 @@ function macros_tables_calculer_criteres ($colonnes, $tri_defaut, $pagination, $
 
   if (is_array($filtres)) {
     foreach ($filtres as $f) {
+      include_spip('filtres/' . $f['filtre']);
       $calculer_criteres_filtres =
-        charger_fonction($f['filtre'], 'filtres');
+        charger_fonction($f['filtre'] . '_calculer_criteres_objet', 'filtres');
 
       $criteres .= $calculer_criteres_filtres($f);
     }
@@ -78,7 +79,7 @@ function macros_tables_filtres ($tableau, $recherche, $filtres) {
   $fonctions_match = array();
   foreach ($filtres as $f) {
     include_spip('filtres/' . $f['filtre']);
-    $fonctions_match[] = charger_fonction($f['filtre'] . '_match','filtres');
+    $fonctions_match[] = charger_fonction($f['filtre'] . '_filtrer_data','filtres');
   }
 
   if ( ! $fonctions_match) {
@@ -91,12 +92,9 @@ function macros_tables_filtres ($tableau, $recherche, $filtres) {
     $pass = FALSE;
     foreach($fonctions_match as $i => $match) {
       if ( ! $pass) {
-        foreach ($filtres[$i]['options']['champs'] as $champ) {
-          if ($match($recherche, $ligne[$champ])) {
-            $resultat[] = $ligne ;
-            $pass = TRUE;
-            break;
-          }
+        if ($match($filtres[$i], $recherche, $ligne)) {
+          $resultat[] = $ligne;
+          $pass = TRUE; // Si un filtre est OK, on ne teste pas les autres.
         }
       }
     }
