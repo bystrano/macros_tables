@@ -25,7 +25,7 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  *     Une chaîne de caractères représentant un ou plusieurs
  *     critères. Sera inséré directement dans la boucle.
  */
-function filtres_multilike_calculer_criteres_objet_dist ($filtre, $recherche=NULL) {
+function filtres_multilike_calculer_criteres_objet_dist ($filtre) {
 
   $opts = $filtre['options'];
   $champs_recherche = $filtre['options']['champs'];

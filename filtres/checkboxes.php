@@ -21,16 +21,12 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  *          'filtre'  => 'multilike',
  *          'options' => array(…les options…),
  *      );
- * @param mixed $recherche
- *      Le paramètre définissant la recherche à effectuer.
  *
  * @return string
  *     Une chaîne de caractères représentant un ou plusieurs
  *     critères. Sera inséré directement dans la boucle.
  */
-function filtres_checkboxes_calculer_criteres_objet_dist ($filtre, $recherche=NULL) {
-
-    spip_log($recherche, 'debug');
+function filtres_checkboxes_calculer_criteres_objet_dist ($filtre) {
 
     $criteres = "";
 

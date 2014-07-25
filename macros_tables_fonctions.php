@@ -23,7 +23,7 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  *                               macros table
  * @return String                Les critères à ajouter dans la boucle.
  */
-function macros_tables_calculer_criteres ($colonnes, $tri_defaut, $pagination, $criteres_extra, $filtres=NULL, $recherches) {
+function macros_tables_calculer_criteres ($colonnes, $tri_defaut, $pagination, $criteres_extra, $filtres=NULL) {
 
   $criteres = '';
 
@@ -40,7 +40,7 @@ function macros_tables_calculer_criteres ($colonnes, $tri_defaut, $pagination, $
       $calculer_criteres_filtres =
         charger_fonction($f['filtre'] . '_calculer_criteres_objet', 'filtres');
 
-      $criteres .= $calculer_criteres_filtres($f, $recherches[$f['options']['nom']]);
+      $criteres .= $calculer_criteres_filtres($f);
     }
   }
 
