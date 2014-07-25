@@ -9,7 +9,8 @@ TODO
 ## Filtres
 
 - [x] permettre plusieurs filtres en série
+- [ ] définir une syntaxe pour de multiples filtres, en série et/ou en parrallèle
 
 ## README
 
-- [ ] décrire (et revoir ?) l'API
+- [ ] décrire (et revoir ?) l'API colonne
