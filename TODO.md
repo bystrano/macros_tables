@@ -10,6 +10,8 @@ TODO
 
 - [x] permettre plusieurs filtres en série
 - [ ] définir une syntaxe pour de multiples filtres, en série et/ou en parrallèle
+- [ ] créer un bloc ajax pour la table, séparé des filtres pour pouvoir faire de l'autosubmit en ajax proprement.
+
 
 ## README
 

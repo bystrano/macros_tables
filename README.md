@@ -122,22 +122,49 @@ On a alors un tableau comme : (en YAML)
                     - titre
                     - objet
         -
-            filtre: multilike
+            filtre: checkboxes
             options:
-                nom: q_chapo
-                champs:
-                    - chapo
+                nom: regions
+                datas:
+                    - "Bruxelles"
+                    - "Liège"
+                    - "Namur"
+                    - "Luxembourg"
+                champs: regions
+                ajax: oui
+                autosubmit: oui
 
 
 #### `multilike`
 
-Le seul filtre disponible pour l'instant…
 Ce filtre ajoute au tableau un formulaire de recherche par mots-clés qui permet de filtrer le tableau en ajax.
 Les options sont :
 
 - **`nom`** définit l'attribut `name` de la balise `<input>` dans laquelle on pourra saisir des mots-clés. Ce nom sera aussi utilisé comme argument dans l'url pour pouvoir précharger le filtre.
 
 - **`champs`** permet de définir les colonnes sql que le filtre prendra en compte. Doit être une liste de noms de colonnes. Pour les macros `table-objet`, ce doivent être des noms de colonnes SQL.
+
+- **`ajax`** permet de filtrer le tableau en ajax, sans rafraîchir toute la page.
+
+- **`options_saisie`** Les options qui seront passées à la saisie input que l'on proposera à l'utilisateur.
+  Permet de définir un label, donner une classe ou autre.
+
+#### `checkboxes`
+
+Le filtre checkboxes propose une saisie checkbox pour filtrer les données. Il ne fonctionne qu'avec la macro `table-data`.
+
+- **`nom`** définit l'attribut `name` de la balise `<input>` dans laquelle on pourra saisir des mots-clés. Ce nom sera aussi utilisé comme argument dans l'url pour pouvoir précharger le filtre.
+
+- **`datas`** qui permet de définir les cases qui seront affichées. On lui donne un tableau clé/valeur, comme pour la saisie checkbox.
+
+- **`champs`** permet de définir les colonnes sql que le filtre prendra en compte. Doit être une liste de noms de colonnes. Pour que le filtre fonctionne correctement les valeurs dans ces champs doivent être du type : `"cle1,cle2,cle3"`. Le plus simple est probablement d'utiliser des valeurs gérées par une saisie checkbox avec les mêmes `datas`.
+
+- **`options_saisie`** Les options qui seront passées à la saisie input que l'on proposera à l'utilisateur.
+  Permet de définir un label, donner une classe ou autre.
+
+- **`ajax`** permet de filtrer le tableau en ajax, sans rafraîchir toute la page.
+
+- **`autosubmit`** permet de recharger le tableau en ajax automatiquement dès qu'on coche/décoche une case. Fait disparaître le bouton de submit, qui n'est plus nécessaire. Ne fonctionne que si l'option `ajax` est activée.
 
 
 ### `colonnes`
