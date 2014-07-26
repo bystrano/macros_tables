@@ -15,7 +15,10 @@
                   args:{
                       '<?php echo $nom; ?>': <?php echo $nom; ?>
                   },
-                  history: true
+                  history: true,
+                  callback: function () {
+                      $('.formulaire_filtre_multilike input.text').focus();
+                  }
               });
           })
     <?php if ($autosubmit === 'oui'): ?>
