@@ -47,16 +47,15 @@ function filtres_checkboxes_calculer_criteres_objet_dist ($filtre) {
  */
 function filtres_checkboxes_filtrer_data_dist ($filtre, $recherche, $ligne) {
 
-    $datas = $filtre['options']['datas'];
     $nom_champ = $filtre['options']['champs'];
-    $champ = explode(', ', $ligne[$nom_champ]);
+    $champ = explode(',', $ligne[$nom_champ]);
 
     // si pas de case cochée, pas de filtre
     if (is_null($recherche)) return TRUE;
 
     foreach ($recherche as $case) {
         foreach ($champ as $valeur) {
-            if ($valeur == $datas[intval($case)])
+            if ($valeur == $case)
                 return TRUE;
         }
     }
