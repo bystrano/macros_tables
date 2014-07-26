@@ -1,14 +1,10 @@
-<form id="filtre_<?php echo $nom_filtre; ?>" class="filtre_multilike" method="get" action="">
+#FORMULAIRE_FILTRE_MULTILIKE{<?php echo $nom . ',' .  array2spip($options_saisie); ?>}
 
-  <input type="hidden" name="page" value="[(#SELF|parametre_url{page})]" />
-  <input type="text" name="<?php echo $nom; ?>" value="#ENV{<?php echo $nom; ?>}" />
-  <input type="submit" value="filtrer" />
 
-</form>
-
+<?php if ($ajax === 'oui'): ?>
 <script type="text/javascript">
   $(function () {
-      $('#filtre_<?php echo $nom_filtre; ?>')
+      $('.formulaire_filtre_multilike form')
           .unbind('submit')
           .submit(function (e) {
               e.preventDefault();
@@ -22,17 +18,18 @@
                   history: true
               });
           })
-<?php if ($autosubmit == 'oui'): ?>
+    <?php if ($autosubmit === 'oui'): ?>
           .find('input')
           .keyup(function () {
               if (window.multilike_timeout) {
                   window.clearTimeout(multilike_timeout);
               }
               multilike_timeout = window.setTimeout(function () {
-                  $('#filtre_<?php echo $nom_filtre; ?>').submit();
+                  $('.formulaire_filtre_multilike form').submit();
               }, 500);
           })
-<?php endif; ?>
+    <?php endif; ?>
           ;
   });
 </script>
+<?php endif; /*endif $ajax */ ?>
