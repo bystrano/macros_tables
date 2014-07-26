@@ -1,5 +1,5 @@
 <?php
-  $options_saisie = $options_saisies ?: array();
+  $options_saisie = $options_saisie ?: array();
   $options_saisie['datas'] = $datas;
 ?>
 
