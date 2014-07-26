@@ -14,3 +14,7 @@ TODO
 ## README
 
 - [ ] décrire (et revoir ?) l'API colonne
+
+## Évolutions futures
+
+- [ ] Peut-être que les macros pourraient prendre aussi l'environnement en paramètre, pour éviter les soucis avec le filtre checkbox (cf commit c7c2ea7) ? Ou alors créer une autre macro pour ça ?
