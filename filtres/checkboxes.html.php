@@ -1,17 +1,15 @@
-<div class="formulaire_spip">
-  <form id="filtre_<?php echo $nom_filtre; ?>" class="filtre_checkboxes" method="get" action="">
+<?php
+  $options_saisie = $options_saisies ?: array();
+  $options_saisie['datas'] = $datas;
+?>
 
-    <input type="hidden" name="page" value="[(#SELF|parametre_url{page})]" />
-    [(#SAISIE{checkbox, <?php echo $nom; ?>, <?php echo "datas=" . array2spip($datas); ?>})]
-    <input type="submit" value="filtrer" />
+#FORMULAIRE_FILTRE_CHECKBOXES{<?php echo $nom . ',' .  array2spip($options_saisie); ?>}
 
-  </form>
-</div>
 
 <?php if ($ajax === 'oui'): ?>
 <script type="text/javascript">
   $(function () {
-      $('#filtre_<?php echo $nom_filtre; ?>')
+      $('.formulaire_filtre_checkboxes form')
           .unbind('submit')
           .submit(function (e) {
               e.preventDefault();
@@ -33,7 +31,7 @@
     <?php if ($autosubmit === 'oui'): ?>
           .find('input')
           .change(function () {
-              $('#filtre_<?php echo $nom_filtre; ?>').submit();
+              $('.formulaire_filtre_checkboxes form').submit();
           })
           .parents('form').first()
           .find('input[type="submit"]').hide();
