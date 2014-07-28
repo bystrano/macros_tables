@@ -114,8 +114,8 @@ function macros_tables_filtres ($tableau, $recherche, $filtres) {
  */
 function array2spip ($tableau) {
 
-  if ( ! is_array($tableau)) {
-    return '#ARRAY{}';
+  if ( ! is_array($tableau) OR (count($tableau) === 0)) {
+    return '#ARRAY';
   }
 
   $balise = '#ARRAY{';
