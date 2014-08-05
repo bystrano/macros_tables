@@ -8,6 +8,8 @@ $objets = $objet . 's';
 <?php if (isset($tri_defaut)): ?>
   [(#SET{defaut_tri,<?php echo array2spip($tri_defaut); ?>})]
 <?php endif; ?>
+
+<div class="filtres">
 <?php
 /**
  * Insertion des formulaires de filtres
@@ -22,6 +24,7 @@ if (is_array($filtres)) {
     echo '#INCLURE{fond=' . recuperer_macro('filtres/' . $filtre['filtre'] . '.html', $contexte) . ', env}';
   }
 } ?>
+</div>
 
 <B_liste_<?php echo $objets; ?>>
 <?php if ($pagination): ?>#ANCRE_PAGINATION<?php endif; ?>
