@@ -28,7 +28,11 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  */
 function filtres_checkboxes_calculer_criteres_objet_dist ($filtre) {
 
-    erreur_squelette("Le filtre checkbox ne peut pas être utilisé avec la macro table-objet");
+    if ($filtre['options']['force'] !== 'oui') {
+        erreur_squelette("Le filtre checkbox ne peut pas être utilisé avec la macro table-objet");
+    }
+
+    return "";
 }
 
 /**
