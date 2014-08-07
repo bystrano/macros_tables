@@ -16,23 +16,25 @@ include_spip('macros_tables_fonctions.php');
                     }
                     echo array2spip($env_filtres);
                     ?>})]
-<?php endif;?>
 
-<div class="filtres">
-<?php
-/**
- * Insertion des formulaires de filtres
- */
-if (is_array($filtres)) {
-  foreach ($filtres as $i => $filtre) {
+  <?php
+  /**
+   * Insertion des formulaires de filtres
+   */
+  echo '<div class="filtres">';
 
-    $contexte = $filtre['options'];
-    $contexte['nom_filtre'] = $i;
-    $contexte['nom_ajax'] = $nom_ajax;
-    echo '#INCLURE{fond=' . recuperer_macro('filtres/' . $filtre['filtre'] . '.html', $contexte) . ', env}';
+  if (is_array($filtres)) {
+    foreach ($filtres as $i => $filtre) {
+
+      $contexte = $filtre['options'];
+      $contexte['nom_filtre'] = $i;
+      $contexte['nom_ajax'] = $nom_ajax;
+      echo '#INCLURE{fond=' . recuperer_macro('filtres/' . $filtre['filtre'] . '.html', $contexte) . ', env}';
+    }
   }
-} ?>
-</div>
+  echo '</div>';?>
+
+<?php endif;?>
 
 <B_data>
 <?php if ($pagination): ?>#ANCRE_PAGINATION<?php endif; ?>
