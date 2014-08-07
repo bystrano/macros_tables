@@ -42,6 +42,17 @@ include_spip('macros_tables_fonctions.php');
 
 <table class='spip liste'>
 [<caption><strong class="caption">(#ENV{titre-table})</strong></caption>]
+  <?php
+  /* On vérifie qu'il y a au moins une entete non-vide. Sinon on zappe
+     le thead. */
+  $skip_thead = TRUE;
+  foreach ($colonnes as $colonne) {
+    if (isset($colonne['options']['entete']) AND $colonne['options'] ['entete']) {
+      $skip_thead = FALSE;
+      break;
+    }
+  }
+  if ( ! $skip_thead ): ?>
 	<thead>
 		<tr class='first_row'>
       <?php
@@ -56,6 +67,7 @@ include_spip('macros_tables_fonctions.php');
          } ?>
 		</tr>
 	</thead>
+  <?php endif; ?>
 	<tbody>
     <?php
     /**
