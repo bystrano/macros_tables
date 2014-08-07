@@ -94,8 +94,9 @@ Le paramètre `pagination` doit être un tableau avec deux clés :
 
 ### `tri_defaut`
 
-Si l'on veut trier le tableau par défaut, on peut définir les colonnes à trier en donnant un tableau à ce paramètre.
+On peut définir l'ordre de tri des données, par colonne, en donnant un tableau à ce paramètre.
 Les clés de ce tableau doivent être des noms de colonnes, et les valeurs soit `1` pour trier dans le sens alphanumérique, soit `-1` pour l'inverse.
+Cette option est obligatoire si l'on veut permettre aux utilisateurs de changer eux-même l'ordre de tri en utilisant l'option `tri` sur un champ.
 
 
 ### `criteres_extra`
