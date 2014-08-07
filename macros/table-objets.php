@@ -8,23 +8,34 @@ $objets = $objet . 's';
 <?php if (isset($tri_defaut)): ?>
   [(#SET{defaut_tri,<?php echo array2spip($tri_defaut); ?>})]
 <?php endif; ?>
+<?php if (isset($filtres)): ?>
+  [(#SET{env_filtres,<?php
+                    $env_filtres = array();
+                    foreach ($filtres as $filtre) {
+                      $nom_filtre = $filtre['options']['nom'];
+                      $env_filtres[$nom_filtre] = '#ENV{' . $nom_filtre . '}';
+                    }
+                    echo array2spip($env_filtres);
+                    ?>})]
 
-<div class="filtres">
-<?php
-/**
- * Insertion des formulaires de filtres
- */
-if (is_array($filtres)) {
-  foreach ($filtres as $i => $filtre) {
+  <?php
+  /**
+   * Insertion des formulaires de filtres
+   */
+  echo '<div class="filtres">';
 
-    $contexte = $filtre['options'];
-    $contexte['nom_filtre'] = $objets . '_' . $i;
-    $contexte['objets'] = $objets;
-    $contexte['nom_ajax'] = $nom_ajax;
-    echo '#INCLURE{fond=' . recuperer_macro('filtres/' . $filtre['filtre'] . '.html', $contexte) . ', env}';
+  if (is_array($filtres)) {
+    foreach ($filtres as $i => $filtre) {
+
+      $contexte = $filtre['options'];
+      $contexte['nom_filtre'] = $i;
+      $contexte['nom_ajax'] = $nom_ajax;
+      echo '#INCLURE{fond=' . recuperer_macro('filtres/' . $filtre['filtre'] . '.html', $contexte) . ', env}';
+    }
   }
-} ?>
-</div>
+  echo '</div>';?>
+
+<?php endif;?>
 
 <B_liste_<?php echo $objets; ?>>
 <?php if ($pagination): ?>#ANCRE_PAGINATION<?php endif; ?>
