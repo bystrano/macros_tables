@@ -45,7 +45,8 @@ function macros_tables_calculer_criteres ($colonnes, $tri_defaut, $pagination, $
   }
 
   if ($tri_defaut) {
-    $criteres .= '{tri ' . array_shift(array_keys($tri_defaut)) . ',#GET{defaut_tri}}';
+    $cles_tri = array_keys($tri_defaut);
+    $criteres .= '{tri ' . array_shift($cles_tri) . ',#GET{defaut_tri}}';
   }
 
   if ($pagination) {
