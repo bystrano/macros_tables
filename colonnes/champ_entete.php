@@ -1,6 +1,6 @@
 <th class='<?php echo $nom; ?>' scope='col'>
    <?php
-   if (( ! isset($tri_defaut)) OR ( ! $tri)) :
+   if ( ! $tri) :
      echo $entete;
    else: ?>
      [(#ENV{tri_<?php echo $nom_table; ?>}|=={<?php echo $nom; ?>}|oui)
