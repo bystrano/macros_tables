@@ -167,6 +167,10 @@ Le filtre checkboxes propose une saisie checkbox pour filtrer les données. Il n
 
 - **`autosubmit`** permet de recharger le tableau en ajax automatiquement dès qu'on coche/décoche une case. Fait disparaître le bouton de submit, qui n'est plus nécessaire. Ne fonctionne que si l'option `ajax` est activée.
 
+### `classe_ligne`
+
+Ce paramètre permet d'incruster un morceau de squelette dans l'attribut `class` de chaque ligne du tableau.
+On peut donc y mettre n'importe quelle chaîne de langue, balise, filtre ou autre, et ce code sera executé dans le contexte de la boucle principale du tableau.
 
 ### `colonnes`
 

@@ -78,7 +78,7 @@ include_spip('macros_tables_fonctions.php');
       echo macros_tables_calculer_criteres($colonnes, $tri_defaut, $pagination, $criteres_extra);
      ?>>
 		[(#LANG|changer_typo)]
-		<tr class="[(#COMPTEUR_BOUCLE|alterner{odd,even})]">
+		<tr class="<?php echo $classe_ligne; ?>[ (#COMPTEUR_BOUCLE|alterner{odd,even})]">
       <?php
         /**
          * Insertion des cellules
