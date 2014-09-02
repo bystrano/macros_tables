@@ -91,6 +91,8 @@ Le paramètre `pagination` doit être un tableau avec deux clés :
 
 - **`pas`** le nombre d'éléments par page.
 
+- **`ajax`** empêche la pagination ajax s'il vaut `non`.
+
 
 ### `tri_defaut`
 

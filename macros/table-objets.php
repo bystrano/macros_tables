@@ -96,9 +96,9 @@ $objets = $objet . 's';
 	</tbody>
 </table>
 <?php if ($pagination): ?>
-  [<p class='pagination'>(#PAGINATION{<?php echo $pagination['modele'] ?
-                                                    $pagination['modele'] : 'prive';
-                                                    ?>})</p>]
+  [<p class='<?php ($pagination['ajax'] != 'non') ? "pagination" : ""; ?>'>
+     (#PAGINATION{<?php echo $pagination['modele'] ? $pagination['modele'] : 'prive'; ?>})
+  </p>]
 <?php endif; ?>
 </div>
 </B_liste_<?php echo $objets; ?>>[
