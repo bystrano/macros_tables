@@ -29,6 +29,10 @@ function filtres_multilike_calculer_criteres_objet_dist ($filtre) {
 
   $opts = $filtre['options'];
   $champs_recherche = $filtre['options']['champs'];
+
+  /* Si pas de paramètre $champs, on n'ajoute pas de critère à la boucle */
+  if (is_null($champs_recherche)) return '';
+
   $criteres = '{' . $filtre['filtre'] . ' #ENV{' . $opts['nom'] . '},' . array2spip($champs_recherche) . '}';
 
   return $criteres;
@@ -55,6 +59,9 @@ function filtres_multilike_filtrer_data_dist ($filtre, $recherche, $ligne) {
   $recherche = strtolower(translitteration($recherche));
   /* Les espaces entre les mots sont interprétés comme des OU */
   $recherche = implode('|', explode(' ', $recherche));
+
+  /* Si pas de paramètre $champs, on ne filtre rien */
+  if (is_null($filtre['options']['champs'])) return TRUE;
 
   foreach ($filtre['options']['champs'] as $champ) {
 

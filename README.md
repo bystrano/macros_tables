@@ -145,7 +145,7 @@ Les options sont :
 
 - **`nom`** définit l'attribut `name` de la balise `<input>` dans laquelle on pourra saisir des mots-clés. Ce nom sera aussi utilisé comme argument dans l'url pour pouvoir précharger le filtre.
 
-- **`champs`** permet de définir les colonnes sql que le filtre prendra en compte. Doit être une liste de noms de colonnes. Pour les macros `table-objet`, ce doivent être des noms de colonnes SQL.
+- **`champs`** permet de définir les colonnes sql que le filtre prendra en compte. Doit être une liste de noms de colonnes. Pour les macros `table-objet`, ce doivent être des noms de colonnes SQL. Si ce paramètre est omis, le filtre n'aura aucun effet sur la boucle.
 
 - **`ajax`** permet de filtrer le tableau en ajax, sans rafraîchir toute la page.
 
