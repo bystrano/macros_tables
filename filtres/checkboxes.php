@@ -54,8 +54,8 @@ function filtres_checkboxes_filtrer_data_dist ($filtre, $recherche, $ligne) {
     $nom_champ = $filtre['options']['champs'];
     $champ = explode(',', $ligne[$nom_champ]);
 
-    // si pas de case cochée, pas de filtre
-    if (is_null($recherche)) return TRUE;
+    // si pas de case cochée ou pas de champs à filtrer, pas de filtre
+    if (is_null($recherche) OR is_null($nom_champ)) return TRUE;
 
     foreach ($recherche as $case) {
         foreach ($champ as $valeur) {

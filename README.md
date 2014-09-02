@@ -160,7 +160,7 @@ Le filtre checkboxes propose une saisie checkbox pour filtrer les données. Il n
 
 - **`datas`** qui permet de définir les cases qui seront affichées. On lui donne un tableau clé/valeur, comme pour la saisie checkbox.
 
-- **`champs`** permet de définir les colonnes sql que le filtre prendra en compte. Doit être une liste de noms de colonnes. Pour que le filtre fonctionne correctement les valeurs dans ces champs doivent être du type : `"cle1,cle2,cle3"`. Le plus simple est probablement d'utiliser des valeurs gérées par une saisie checkbox avec les mêmes `datas`.
+- **`champs`** permet de définir les colonnes sql que le filtre prendra en compte. Doit être une liste de noms de colonnes. Pour que le filtre fonctionne correctement les valeurs dans ces champs doivent être du type : `"cle1,cle2,cle3"`. Le plus simple est probablement d'utiliser des valeurs gérées par une saisie checkbox avec les mêmes `datas`. Si ce paramètre est omis, le filtre n'aura aucun effet sur la boucle.
 
 - **`options_saisie`** Les options qui seront passées à la saisie input que l'on proposera à l'utilisateur.
   Permet de définir un label, donner une classe ou autre.
