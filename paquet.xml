@@ -1,8 +1,8 @@
 <paquet
 	prefix="macros_tables"
 	categorie="outil"
-	version="0.0.1"
-	etat="dev"
+	version="0.1.0"
+	etat="test"
 	compatibilite="[3.0.11;3.0.*]"
 	logo=""
 	documentation=""
