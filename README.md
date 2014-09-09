@@ -194,6 +194,7 @@ Les options possibles sont :
 
 - **`ajax`** définit si on le tri se fait sans recharger complètement la page. `oui` si on veut activer le tri en ajax, sinon on peut tout simplement omettre ce paramètre.
 
+- **`class`** permet d'ajouter une ou plusieurs classes aux balises `<td>` de la colonne.
 
 
 Paramètres des squelettes générés
