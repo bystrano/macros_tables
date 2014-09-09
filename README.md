@@ -44,9 +44,9 @@ On n'a alors plus qu'à écrire un fichier `tables/table-artrub.yaml`, par exemp
             filtre: multilike
             options:
                 nom: q
-            champs:
-                - titre
-                - objet
+                champs:
+                    - titre
+                    - objet
     colonnes:
         -
             colonne: champ
