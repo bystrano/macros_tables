@@ -5,8 +5,8 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
-	// M
-	'macros_tables_titre' => 'Macro Table',
+    // M
+    'macros_tables_titre' => 'Macro Table',
 );
 
 ?>

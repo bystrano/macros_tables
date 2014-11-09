@@ -1,19 +1,19 @@
 <paquet
-	prefix="macros_tables"
-	categorie="outil"
-	version="0.1.0"
-	etat="test"
-	compatibilite="[3.0.11;3.0.*]"
-	logo=""
-	documentation=""
+  prefix="macros_tables"
+  categorie="outil"
+  version="0.1.0"
+  etat="test"
+  compatibilite="[3.0.11;3.0.*]"
+  logo=""
+  documentation=""
 >
 
-	<nom>Macro Table</nom>
+  <nom>Macro Table</nom>
 
-	<auteur>Michel Bystranowski</auteur>
+  <auteur>Michel Bystranowski</auteur>
 
-	<licence>GNU/GPL</licence>
+  <licence>GNU/GPL</licence>
 
-	<necessite nom="macros" compatibilite="[1.0.0;]" />
+  <necessite nom="macros" compatibilite="[1.0.0;]" />
 
 </paquet>

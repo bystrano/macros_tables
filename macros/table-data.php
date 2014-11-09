@@ -53,8 +53,8 @@ include_spip('macros_tables_fonctions.php');
     }
   }
   if ( ! $skip_thead ): ?>
-	<thead>
-		<tr class='first_row'>
+    <thead>
+        <tr class='first_row'>
       <?php
          /**
           * Insertion des entêtes du tableau
@@ -65,10 +65,10 @@ include_spip('macros_tables_fonctions.php');
                     'colonnes/' . $colonne['colonne'] . '_entete',
                     $colonne['options']);
          } ?>
-		</tr>
-	</thead>
+        </tr>
+    </thead>
   <?php endif; ?>
-	<tbody>
+    <tbody>
     <?php
     /**
      * Boucle principale
@@ -77,8 +77,8 @@ include_spip('macros_tables_fonctions.php');
     <BOUCLE_data(DATA){source tableau, #ENV{donnees}|macros_tables_filtres{#GET{env_filtres}, <?php echo array2spip($filtres); ?>}}<?php
       echo macros_tables_calculer_criteres($colonnes, $tri_defaut, $pagination, $criteres_extra);
      ?>>
-		[(#LANG|changer_typo)]
-		<tr class="<?php echo $classe_ligne; ?>[ (#COMPTEUR_BOUCLE|alterner{odd,even})]">
+        [(#LANG|changer_typo)]
+        <tr class="<?php echo $classe_ligne; ?>[ (#COMPTEUR_BOUCLE|alterner{odd,even})]">
       <?php
         /**
          * Insertion des cellules
@@ -89,10 +89,10 @@ include_spip('macros_tables_fonctions.php');
                       $colonne['options']);
         }
       ?>
-		</tr>
-	</BOUCLE_data>
-	[(#REM|changer_typo)]
-	</tbody>
+        </tr>
+    </BOUCLE_data>
+    [(#REM|changer_typo)]
+    </tbody>
 </table>
 <?php if ($pagination): ?>
   [<p class='<?php ($pagination['ajax'] != 'non') ? "pagination" : ""; ?>'>

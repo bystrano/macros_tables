@@ -54,8 +54,8 @@ $objets = $objet . 's';
     }
   }
   if ( ! $skip_thead ): ?>
-	<thead>
-		<tr class='first_row'>
+    <thead>
+        <tr class='first_row'>
       <?php
          /**
           * Insertion des entêtes du tableau
@@ -66,10 +66,10 @@ $objets = $objet . 's';
                     'colonnes/' . $colonne['colonne'] . '_entete',
                     $colonne['options']);
          } ?>
-		</tr>
-	</thead>
+        </tr>
+    </thead>
   <?php endif; ?>
-	<tbody>
+    <tbody>
     <?php
     /**
      * Boucle principale
@@ -78,8 +78,8 @@ $objets = $objet . 's';
     <BOUCLE_liste_<?php echo $objets; ?>(<?php echo strtoupper($objets); ?>)<?php
     echo macros_tables_calculer_criteres($colonnes, $tri_defaut, $pagination, $criteres_extra, $filtres);
      ?>>
-		[(#LANG|changer_typo)]
-		<tr class="<?php echo $classe_ligne; ?>[ (#COMPTEUR_BOUCLE|alterner{odd,even})]">
+        [(#LANG|changer_typo)]
+        <tr class="<?php echo $classe_ligne; ?>[ (#COMPTEUR_BOUCLE|alterner{odd,even})]">
       <?php
         /**
          * Insertion des cellules
@@ -90,10 +90,10 @@ $objets = $objet . 's';
                    $colonne['options']);
         }
       ?>
-		</tr>
-	</BOUCLE_liste_<?php echo $objets; ?>>
-	[(#REM|changer_typo)]
-	</tbody>
+        </tr>
+    </BOUCLE_liste_<?php echo $objets; ?>>
+    [(#REM|changer_typo)]
+    </tbody>
 </table>
 <?php if ($pagination): ?>
   [<p class='<?php ($pagination['ajax'] != 'non') ? "pagination" : ""; ?>'>
