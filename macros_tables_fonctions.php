@@ -169,17 +169,46 @@ function critere_multilike_dist ($idb, &$boucles, $crit) {
  */
 function calculer_where_multilike ($table, $recherche, $champs) {
 
-  $where = array('LIKE', $table . '.' . array_shift($champs),
+  $champs_prefixes = array();
+  foreach ($champs as $champ) {
+      if (strpos($champ, '.')) {
+
+          list($table_joint, $champ) = explode('.', $champ);
+
+          include_spip('base/objets');
+
+          $trouver_table = charger_fonction('trouver_table', 'base');
+
+          $depart = array($table,
+                          $trouver_table($table));
+
+          $arrivee = array($nom_objet_joint,
+                           $trouver_table($table_joint));
+
+          $alias_jointure = calculer_jointure($boucle, $depart, $arrivee);
+
+          spip_log($alias_jointure, 'debug');
+
+          $champs_prefixes[] = "$alias_jointure.$champ";
+
+      } else {
+          $champs_prefixes[] = "$table.$champ";
+      }
+  }
+
+  $champs = $champs_prefixes;
+
+  $where = array('LIKE', array_shift($champs),
                  sql_quote('%' . $recherche . '%'));
 
   foreach ($champs as $champ) {
     $where = array(
                'OR',
-               array('LIKE', $table . '.' . $champ,
+               array('LIKE', $champ,
                      sql_quote('%' . $recherche . '%')),
                $where,
              );
   }
 
-  return $where;
+  return $recherche ? $where : null;
 }
