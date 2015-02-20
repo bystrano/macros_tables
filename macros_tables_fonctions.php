@@ -137,6 +137,9 @@ function array2spip ($tableau) {
 /**
  * Implémente un nouveau critère, qui permet de faire LIKE sql sur plusieurs champs
  *
+ * TODO gestion des mauvais paramètres… Pour l'instant c'est
+ *      imprévisible quand on met n'importe quoi…
+ *
  * @example <BOUCLE_exemple(ARTICLES){multilike test,#ARRAY{0,chapo,1,texte}}>
  *     N'affichera dans la boucle que les articles qui contiennent le
  *     mot "test" dans leur chapo ou dans leur texte.
@@ -157,6 +160,45 @@ function critere_multilike_dist ($idb, &$boucles, $crit) {
     $champs = calculer_liste($crit->param[1], array(), $boucles, $boucles[$idb]->id_parent);
   }
 
+  /* On récupère directement le tableau des champs, ce qui implique
+     qu'on doit passer un tableau en dur en paramètre. Le critère ne
+     fonctionnera pas si on passe par exemple une balise #GET qui
+     récupère un tableau. */
+  eval('$champs = '.$champs.';');
+
+  if ( ! is_array($champs)) {
+    return (array('zbug_parametre_critere_invalide', array('critere' => $crit->op )));
+  }
+
+  $champs_prefixes = array();
+  foreach ($champs as $champ) {
+
+      if (strpos($champ, '.')) {
+
+          list($table_joint, $champ) = explode('.', $champ);
+
+          include_spip('base/objets');
+          $trouver_table = charger_fonction('trouver_table', 'base');
+
+          $depart = array($table, $trouver_table($table));
+          $arrivee = array($table_joint, $trouver_table($table_joint));
+          $alias_jointure = calculer_jointure($boucle, $depart, $arrivee);
+
+          $champs_prefixes[] = "$alias_jointure.$champ";
+
+      } else {
+
+          $champs_prefixes[] = "$table.$champ";
+      }
+  }
+
+  /* on repasse le tableau des champs en texte php */
+  $champs = 'array(';
+  foreach ($champs_prefixes as $i => $champ) {
+      $champs .= "$i => '$champ',\n";
+  }
+  $champs .= ')';
+
   /* Construction du tableau $where */
   $c = "calculer_where_multilike($table, $recherche, $champs)";
 
@@ -168,35 +210,6 @@ function critere_multilike_dist ($idb, &$boucles, $crit) {
  * Calculer le WHERE SQL correspondant à un critère multilike
  */
 function calculer_where_multilike ($table, $recherche, $champs) {
-
-  $champs_prefixes = array();
-  foreach ($champs as $champ) {
-      if (strpos($champ, '.')) {
-
-          list($table_joint, $champ) = explode('.', $champ);
-
-          include_spip('base/objets');
-
-          $trouver_table = charger_fonction('trouver_table', 'base');
-
-          $depart = array($table,
-                          $trouver_table($table));
-
-          $arrivee = array($nom_objet_joint,
-                           $trouver_table($table_joint));
-
-          $alias_jointure = calculer_jointure($boucle, $depart, $arrivee);
-
-          spip_log($alias_jointure, 'debug');
-
-          $champs_prefixes[] = "$alias_jointure.$champ";
-
-      } else {
-          $champs_prefixes[] = "$table.$champ";
-      }
-  }
-
-  $champs = $champs_prefixes;
 
   $where = array('LIKE', array_shift($champs),
                  sql_quote('%' . $recherche . '%'));
