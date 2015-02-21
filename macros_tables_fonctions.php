@@ -155,6 +155,8 @@ function critere_multilike_dist ($idb, &$boucles, $crit) {
 
   if (isset($crit->param[1])) {
     $champs = calculer_liste($crit->param[1], array(), $boucles, $boucles[$idb]->id_parent);
+  } else { /* parametre obligatoire */
+    return (array('zbug_critere_necessite_parametre', array('critere' => $crit->op )));
   }
 
   /* Construction du tableau $where */
