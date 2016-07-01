@@ -160,7 +160,7 @@ function critere_multilike_dist ($idb, &$boucles, $crit) {
   }
 
   /* Construction du tableau $where */
-  $c = "calculer_where_multilike($table, $recherche, $champs)";
+  $c = "calculer_where_multilike('$table', $recherche, $champs)";
 
   $boucle->where[] = $c;
 }
