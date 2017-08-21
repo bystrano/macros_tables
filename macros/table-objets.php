@@ -4,6 +4,7 @@
  */
 include_spip('macros_tables_fonctions.php');
 $objets = $objet . 's';
+$filtres = array();
 ?>
 <?php if (isset($tri_defaut)): ?>
   [(#SET{defaut_tri,<?php echo array2spip($tri_defaut); ?>})]

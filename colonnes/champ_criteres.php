@@ -5,7 +5,7 @@ function colonnes_champ_criteres_dist($colonne) {
 	$criteres = '';
 	$opts = $colonne['options'];
 
-	if (($opts['filtrer'] == 'oui')) {
+	if (isset($opts['filtrer']) and ($opts['filtrer'] == 'oui')) {
 	$criteres .= '{' . $opts['nom'] . '?}';
 	}
 
