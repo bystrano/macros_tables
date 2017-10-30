@@ -6,7 +6,7 @@ include_spip('macros_tables_fonctions.php');
 $objets = $objet . 's';
 $filtres = array();
 ?>
-<?php if (iset($tri_defaut)): ?>
+<?php if (isset($tri_defaut)): ?>
 	[(#SET{defaut_tri,<?php echo array2spip($tri_defaut); ?>})]
 <?php endif; ?>
 <?php if (isset($filtres)): ?>
@@ -97,7 +97,7 @@ $filtres = array();
 		</tbody>
 </table>
 <?php if ($pagination): ?>
-	[<p class='<?php ($pagination['ajax'] != 'non') ? "pagination" : ""; ?>'>
+	[<p class='<?php isset($pagination["ajax"]) and ($pagination["ajax"] != "non") ? "pagination" : ""; ?>'>
 		 (#PAGINATION{<?php echo $pagination['modele'] ? $pagination['modele'] : 'prive'; ?>})
 	</p>]
 <?php endif; ?>

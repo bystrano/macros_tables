@@ -1,7 +1,9 @@
 <th class='<?php echo $nom; ?>' scope='col'>
 	 <?php
-	 if (! $tri) :
-		 echo $entete;
+	 if ((! isset($tri)) or (! $tri)) :
+		 if (isset($entete)) :
+			 echo $entete;
+		 endif;
 	 else : ?>
 		 [(#ENV{tri_<?php echo $nom_table; ?>}|=={<?php echo $nom; ?>}|oui)
 			 [(#ENV{sens_<?php echo $nom_table; ?>}|=={-1}|?{
